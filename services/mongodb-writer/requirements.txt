@@ -1,0 +1,14 @@
+# MongoDB Writer Service — Module 4
+# Distributed NoSQL-Based Disaster Monitoring and Analytics System
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Python >= 3.9 required
+
+# MongoDB Python driver (official, synchronous)
+pymongo>=4.0.0
+
+# Kafka client (for Kafka → MongoDB live mode)
+# Already installed if you ran kafka-producer or kafka-consumer requirements.
+kafka-python>=2.0.2

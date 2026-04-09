@@ -1,0 +1,2 @@
+# Transform Service -- no third-party dependencies
+# All libraries used (csv, json, math, os, collections) are Python stdlib

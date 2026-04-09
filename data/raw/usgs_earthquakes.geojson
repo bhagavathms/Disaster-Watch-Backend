@@ -1,0 +1,5211 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": 1772121159054,
+    "title": "Synthetic USGS Earthquakes",
+    "status": 200,
+    "count": 130
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "137 km from Turkey",
+        "time": 1735539117507,
+        "updated": 1735539490704,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7562850843",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7562850843&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 75,
+        "net": "se",
+        "code": "se79118",
+        "ids": ",us7562850843,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.59,
+        "rms": 0.76,
+        "gap": 289.3,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.1 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.7713,
+          40.3696,
+          31.055
+        ]
+      },
+      "id": "us7562850843"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.7,
+        "place": "59 km from Greece/Italy",
+        "time": 1743773062863,
+        "updated": 1743774829840,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7557605959",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7557605959&format=geojson",
+        "felt": 1,
+        "cdi": 2.6,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 222,
+        "net": "nn",
+        "code": "nn26276",
+        "ids": ",us7557605959,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": 40,
+        "dmin": 5.245,
+        "rms": 0.89,
+        "gap": 231.2,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 3.7 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7947,
+          43.7323,
+          192.27
+        ]
+      },
+      "id": "us7557605959"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "98 km from Indonesia",
+        "time": 1730659993190,
+        "updated": 1730660624053,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7828241653",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7828241653&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 97,
+        "net": "ci",
+        "code": "ci53401",
+        "ids": ",us7828241653,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.927,
+        "rms": 0.65,
+        "gap": 185.9,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.4 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.2863,
+          1.7488,
+          44.061
+        ]
+      },
+      "id": "us7828241653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "49 km from Chile/Peru",
+        "time": 1747272242933,
+        "updated": 1747272321039,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7985397584",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7985397584&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 76,
+        "net": "nc",
+        "code": "nc53491",
+        "ids": ",us7985397584,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.123,
+        "rms": 0.4,
+        "gap": 178.5,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.5 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.719,
+          -23.2031,
+          56.828
+        ]
+      },
+      "id": "us7985397584"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "192 km from Turkey",
+        "time": 1745995992650,
+        "updated": 1745997101340,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7809746146",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7809746146&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 53,
+        "net": "se",
+        "code": "se36337",
+        "ids": ",us7809746146,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.512,
+        "rms": 0.72,
+        "gap": 97.4,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.3424,
+          37.4141,
+          44.948
+        ]
+      },
+      "id": "us7809746146"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "134 km from Pakistan/Afghanistan",
+        "time": 1740626984670,
+        "updated": 1740627773467,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6157556241",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6157556241&format=geojson",
+        "felt": 111,
+        "cdi": 1.6,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 112,
+        "net": "se",
+        "code": "se93024",
+        "ids": ",us6157556241,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": 63,
+        "dmin": 12.46,
+        "rms": 0.49,
+        "gap": 26.2,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 3.0 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.7648,
+          36.5832,
+          64.756
+        ]
+      },
+      "id": "us6157556241"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "51 km from Turkey",
+        "time": 1743952414018,
+        "updated": 1743952731892,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6386184279",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6386184279&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 113,
+        "net": "ci",
+        "code": "ci83404",
+        "ids": ",us6386184279,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.286,
+        "rms": 0.3,
+        "gap": 212.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.7 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1363,
+          40.7936,
+          56.623
+        ]
+      },
+      "id": "us6386184279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "39 km from Philippines",
+        "time": 1732734018468,
+        "updated": 1732734957063,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6859430463",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6859430463&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 79,
+        "net": "nn",
+        "code": "nn38479",
+        "ids": ",us6859430463,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.956,
+        "rms": 1.6,
+        "gap": 261.3,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.2 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.5788,
+          14.3735,
+          7.356
+        ]
+      },
+      "id": "us6859430463"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "90 km from Chile/Peru",
+        "time": 1730544491192,
+        "updated": 1730544595864,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7306773869",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7306773869&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 65,
+        "net": "us",
+        "code": "us38073",
+        "ids": ",us7306773869,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.844,
+        "rms": 1.12,
+        "gap": 170.8,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.2057,
+          -41.1379,
+          15.936
+        ]
+      },
+      "id": "us7306773869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "46 km from Pakistan/Afghanistan",
+        "time": 1708331148753,
+        "updated": 1708332730857,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6054302826",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6054302826&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 134,
+        "net": "nc",
+        "code": "nc32931",
+        "ids": ",us6054302826,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.861,
+        "rms": 1.72,
+        "gap": 108.1,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.7 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.1761,
+          36.7002,
+          23.314
+        ]
+      },
+      "id": "us6054302826"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.3,
+        "place": "150 km from Nepal/Tibet",
+        "time": 1748600505276,
+        "updated": 1748601141871,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6935500147",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6935500147&format=geojson",
+        "felt": 0,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 190,
+        "net": "us",
+        "code": "us96459",
+        "ids": ",us6935500147,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": 11,
+        "dmin": 4.174,
+        "rms": 1.63,
+        "gap": 245.0,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 3.3 - Nepal/Tibet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.7463,
+          34.5548,
+          5.601
+        ]
+      },
+      "id": "us6935500147"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "170 km from Pakistan/Afghanistan",
+        "time": 1736550456148,
+        "updated": 1736551553420,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7149692696",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7149692696&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 72,
+        "net": "ak",
+        "code": "ak59524",
+        "ids": ",us7149692696,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.675,
+        "rms": 1.16,
+        "gap": 128.0,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.1 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.5404,
+          26.4047,
+          20.936
+        ]
+      },
+      "id": "us7149692696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "180 km from New Zealand",
+        "time": 1756026568765,
+        "updated": 1756027441960,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6904465218",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6904465218&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 99,
+        "net": "hv",
+        "code": "hv39740",
+        "ids": ",us6904465218,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.405,
+        "rms": 0.76,
+        "gap": 145.5,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.3 - New Zealand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          169.6391,
+          -43.4066,
+          22.311
+        ]
+      },
+      "id": "us6904465218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "137 km from Philippines",
+        "time": 1754931750612,
+        "updated": 1754933443947,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7084950129",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7084950129&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 50,
+        "net": "nc",
+        "code": "nc22207",
+        "ids": ",us7084950129,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.786,
+        "rms": 0.72,
+        "gap": 144.4,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4252,
+          5.8072,
+          44.2
+        ]
+      },
+      "id": "us7084950129"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "199 km from Nepal/Tibet",
+        "time": 1761117444641,
+        "updated": 1761119931616,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7314797238",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7314797238&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 83,
+        "net": "ci",
+        "code": "ci65511",
+        "ids": ",us7314797238,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.353,
+        "rms": 1.45,
+        "gap": 65.3,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.5 - Nepal/Tibet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94.0224,
+          34.7039,
+          47.767
+        ]
+      },
+      "id": "us7314797238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "155 km from Japan",
+        "time": 1756245612636,
+        "updated": 1756249156748,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6266710494",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6266710494&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 42,
+        "net": "ci",
+        "code": "ci70551",
+        "ids": ",us6266710494,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.841,
+        "rms": 0.5,
+        "gap": 182.0,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.1 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.9221,
+          39.6011,
+          29.696
+        ]
+      },
+      "id": "us6266710494"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "76 km from Indonesia",
+        "time": 1725448036799,
+        "updated": 1725449698960,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7505113242",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7505113242&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 84,
+        "net": "hv",
+        "code": "hv92538",
+        "ids": ",us7505113242,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.399,
+        "rms": 1.43,
+        "gap": 168.6,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.5 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.3962,
+          -0.408,
+          229.691
+        ]
+      },
+      "id": "us7505113242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "113 km from Pakistan/Afghanistan",
+        "time": 1711998210838,
+        "updated": 1712000498687,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7486004913",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7486004913&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 85,
+        "net": "nc",
+        "code": "nc98482",
+        "ids": ",us7486004913,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.201,
+        "rms": 1.26,
+        "gap": 83.3,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.6 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.984,
+          27.2229,
+          65.788
+        ]
+      },
+      "id": "us7486004913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "146 km from Japan",
+        "time": 1706052545875,
+        "updated": 1706053730344,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6822192253",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6822192253&format=geojson",
+        "felt": 1,
+        "cdi": 3.3,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 146,
+        "net": "uu",
+        "code": "uu34541",
+        "ids": ",us6822192253,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": 131,
+        "dmin": 5.52,
+        "rms": 1.05,
+        "gap": 195.0,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 3.0 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.6931,
+          32.337,
+          45.19
+        ]
+      },
+      "id": "us6822192253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "168 km from Indonesia",
+        "time": 1759480309040,
+        "updated": 1759483147691,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6451636444",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6451636444&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 104,
+        "net": "nn",
+        "code": "nn70627",
+        "ids": ",us6451636444,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.565,
+        "rms": 1.42,
+        "gap": 155.7,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.6 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.9562,
+          -1.9343,
+          39.029
+        ]
+      },
+      "id": "us6451636444"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "93 km from Philippines",
+        "time": 1745022652649,
+        "updated": 1745024160809,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6706753650",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6706753650&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 65,
+        "net": "hv",
+        "code": "hv42851",
+        "ids": ",us6706753650,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.136,
+        "rms": 1.1,
+        "gap": 50.6,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.5 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.3941,
+          14.514,
+          58.689
+        ]
+      },
+      "id": "us6706753650"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "98 km from Japan",
+        "time": 1710362848345,
+        "updated": 1710362964118,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6565659542",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6565659542&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 55,
+        "net": "nn",
+        "code": "nn93690",
+        "ids": ",us6565659542,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.084,
+        "rms": 0.6,
+        "gap": 25.6,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.0 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.7405,
+          30.2284,
+          11.03
+        ]
+      },
+      "id": "us6565659542"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "109 km from Chile/Peru",
+        "time": 1730200742684,
+        "updated": 1730202879781,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6273510370",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6273510370&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 109,
+        "net": "nn",
+        "code": "nn36538",
+        "ids": ",us6273510370,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.053,
+        "rms": 1.79,
+        "gap": 43.7,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.4 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.5222,
+          -31.3286,
+          56.366
+        ]
+      },
+      "id": "us6273510370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "128 km from Pakistan/Afghanistan",
+        "time": 1760792180755,
+        "updated": 1760794795497,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7349045920",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7349045920&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 134,
+        "net": "ci",
+        "code": "ci58456",
+        "ids": ",us7349045920,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.976,
+        "rms": 0.84,
+        "gap": 165.3,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.7 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8674,
+          34.4541,
+          68.912
+        ]
+      },
+      "id": "us7349045920"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "32 km from Mexico/C.America",
+        "time": 1705236906691,
+        "updated": 1705238368478,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7618124260",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7618124260&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 65,
+        "net": "se",
+        "code": "se31464",
+        "ids": ",us7618124260,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.121,
+        "rms": 1.5,
+        "gap": 64.8,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.4 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7796,
+          28.2549,
+          32.073
+        ]
+      },
+      "id": "us7618124260"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.1,
+        "place": "197 km from Central Asia",
+        "time": 1709311002147,
+        "updated": 1709312080459,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6365162766",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6365162766&format=geojson",
+        "felt": 7,
+        "cdi": 2.4,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 120,
+        "net": "hv",
+        "code": "hv83229",
+        "ids": ",us6365162766,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": 97,
+        "dmin": 12.186,
+        "rms": 0.32,
+        "gap": 83.3,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 3.1 - Central Asia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.9006,
+          40.9552,
+          27.282
+        ]
+      },
+      "id": "us6365162766"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "5 km from Greece/Italy",
+        "time": 1717266798677,
+        "updated": 1717270033623,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7672799448",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7672799448&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 56,
+        "net": "ci",
+        "code": "ci87308",
+        "ids": ",us7672799448,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 1.379,
+        "rms": 1.48,
+        "gap": 143.3,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.3 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8798,
+          36.7028,
+          9.323
+        ]
+      },
+      "id": "us7672799448"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "166 km from New Zealand",
+        "time": 1752723850852,
+        "updated": 1752726909407,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7615857880",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7615857880&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 80,
+        "net": "se",
+        "code": "se79208",
+        "ids": ",us7615857880,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.352,
+        "rms": 1.54,
+        "gap": 161.4,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.4 - New Zealand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          171.0682,
+          -44.8988,
+          30.805
+        ]
+      },
+      "id": "us7615857880"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "191 km from Indonesia",
+        "time": 1747192734443,
+        "updated": 1747193927296,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6338706626",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6338706626&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 87,
+        "net": "se",
+        "code": "se99226",
+        "ids": ",us6338706626,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.591,
+        "rms": 1.69,
+        "gap": 119.2,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.5 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.9815,
+          1.6413,
+          0.697
+        ]
+      },
+      "id": "us6338706626"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "129 km from Philippines",
+        "time": 1710716333291,
+        "updated": 1710717745878,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7547444437",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7547444437&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 98,
+        "net": "se",
+        "code": "se70963",
+        "ids": ",us7547444437,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 6.624,
+        "rms": 0.91,
+        "gap": 173.6,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.6786,
+          9.8891,
+          12.636
+        ]
+      },
+      "id": "us7547444437"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "61 km from Mexico/C.America",
+        "time": 1736526422065,
+        "updated": 1736528865696,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7596038921",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7596038921&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 59,
+        "net": "us",
+        "code": "us50058",
+        "ids": ",us7596038921,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.18,
+        "rms": 1.64,
+        "gap": 210.1,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.3 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.1094,
+          23.9097,
+          34.164
+        ]
+      },
+      "id": "us7596038921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "42 km from Nepal/Tibet",
+        "time": 1763389385991,
+        "updated": 1763391472594,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6436246578",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6436246578&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 137,
+        "net": "ak",
+        "code": "ak72458",
+        "ids": ",us6436246578,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.458,
+        "rms": 0.94,
+        "gap": 91.9,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.9 - Nepal/Tibet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.7367,
+          34.56,
+          66.772
+        ]
+      },
+      "id": "us6436246578"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "198 km from Indonesia",
+        "time": 1735429838885,
+        "updated": 1735432143750,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7604087779",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7604087779&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 40,
+        "net": "ak",
+        "code": "ak94398",
+        "ids": ",us7604087779,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.352,
+        "rms": 0.69,
+        "gap": 55.5,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.0 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.3845,
+          -1.4695,
+          41.601
+        ]
+      },
+      "id": "us7604087779"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "32 km from Chile/Peru",
+        "time": 1736565433629,
+        "updated": 1736567979858,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6889223503",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6889223503&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 60,
+        "net": "us",
+        "code": "us15036",
+        "ids": ",us6889223503,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.777,
+        "rms": 0.61,
+        "gap": 58.7,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.2 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.7289,
+          -11.3609,
+          24.796
+        ]
+      },
+      "id": "us6889223503"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "104 km from Philippines",
+        "time": 1758140789870,
+        "updated": 1758144061217,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7024526670",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7024526670&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 68,
+        "net": "nn",
+        "code": "nn35206",
+        "ids": ",us7024526670,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.671,
+        "rms": 1.4,
+        "gap": 13.4,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.4 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.3396,
+          18.9044,
+          39.145
+        ]
+      },
+      "id": "us7024526670"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "98 km from Japan",
+        "time": 1713476201345,
+        "updated": 1713479524500,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6268291372",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6268291372&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 104,
+        "net": "uu",
+        "code": "uu96946",
+        "ids": ",us6268291372,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.439,
+        "rms": 1.31,
+        "gap": 57.4,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.156,
+          42.8239,
+          29.193
+        ]
+      },
+      "id": "us6268291372"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "170 km from Chile/Peru",
+        "time": 1766073748603,
+        "updated": 1766074058951,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6730827792",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6730827792&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 121,
+        "net": "ak",
+        "code": "ak75146",
+        "ids": ",us6730827792,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.839,
+        "rms": 1.65,
+        "gap": 204.8,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.7 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.465,
+          -10.9141,
+          4.604
+        ]
+      },
+      "id": "us6730827792"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "14 km from Indonesia",
+        "time": 1720088095893,
+        "updated": 1720090047580,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7860957000",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7860957000&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 60,
+        "net": "nn",
+        "code": "nn77678",
+        "ids": ",us7860957000,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.425,
+        "rms": 0.85,
+        "gap": 193.6,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.8613,
+          -3.9125,
+          30.395
+        ]
+      },
+      "id": "us7860957000"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "9 km from Chile/Peru",
+        "time": 1755808175394,
+        "updated": 1755809831213,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7263104549",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7263104549&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 154,
+        "net": "ci",
+        "code": "ci83148",
+        "ids": ",us7263104549,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.145,
+        "rms": 0.85,
+        "gap": 203.6,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.9 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.1937,
+          -32.2869,
+          11.001
+        ]
+      },
+      "id": "us7263104549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "161 km from Greece/Italy",
+        "time": 1718237301126,
+        "updated": 1718237575293,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6655822646",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6655822646&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 102,
+        "net": "uu",
+        "code": "uu27728",
+        "ids": ",us6655822646,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 6.376,
+        "rms": 0.86,
+        "gap": 12.0,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.4 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.9737,
+          39.4951,
+          264.177
+        ]
+      },
+      "id": "us6655822646"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "84 km from Indonesia",
+        "time": 1740643644130,
+        "updated": 1740646950703,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6209785151",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6209785151&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 50,
+        "net": "us",
+        "code": "us19840",
+        "ids": ",us6209785151,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.076,
+        "rms": 1.36,
+        "gap": 43.1,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.3 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.0296,
+          -1.6214,
+          65.535
+        ]
+      },
+      "id": "us6209785151"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "174 km from Mexico/C.America",
+        "time": 1708592406042,
+        "updated": 1708592920301,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6179273650",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6179273650&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 62,
+        "net": "ci",
+        "code": "ci55024",
+        "ids": ",us6179273650,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.421,
+        "rms": 0.68,
+        "gap": 19.6,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.4 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2989,
+          25.304,
+          26.789
+        ]
+      },
+      "id": "us6179273650"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "43 km from Pakistan/Afghanistan",
+        "time": 1728305951018,
+        "updated": 1728306856738,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7634119963",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7634119963&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 73,
+        "net": "nc",
+        "code": "nc34796",
+        "ids": ",us7634119963,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 11.348,
+        "rms": 1.25,
+        "gap": 61.0,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8253,
+          36.4198,
+          21.139
+        ]
+      },
+      "id": "us7634119963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "117 km from Japan",
+        "time": 1756927438697,
+        "updated": 1756927626017,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6614812242",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6614812242&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 112,
+        "net": "us",
+        "code": "us11767",
+        "ids": ",us6614812242,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.553,
+        "rms": 1.59,
+        "gap": 273.0,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.4 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.4805,
+          37.5035,
+          25.239
+        ]
+      },
+      "id": "us6614812242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "116 km from Indonesia",
+        "time": 1734699421457,
+        "updated": 1734700493585,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6222892838",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6222892838&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 121,
+        "net": "us",
+        "code": "us10535",
+        "ids": ",us6222892838,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.211,
+        "rms": 0.39,
+        "gap": 184.3,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.9 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.2292,
+          4.5524,
+          21.511
+        ]
+      },
+      "id": "us6222892838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "14 km from Indonesia",
+        "time": 1733554976355,
+        "updated": 1733558131377,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6229186504",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6229186504&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 87,
+        "net": "hv",
+        "code": "hv87050",
+        "ids": ",us6229186504,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.884,
+        "rms": 0.6,
+        "gap": 297.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.4 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.7028,
+          -0.2038,
+          173.36
+        ]
+      },
+      "id": "us6229186504"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "129 km from Chile/Peru",
+        "time": 1749770342998,
+        "updated": 1749770790061,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7932738554",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7932738554&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 86,
+        "net": "ci",
+        "code": "ci50833",
+        "ids": ",us7932738554,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 11.13,
+        "rms": 1.5,
+        "gap": 29.0,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.4 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.9516,
+          -35.2513,
+          11.607
+        ]
+      },
+      "id": "us7932738554"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "174 km from Iran",
+        "time": 1708175686736,
+        "updated": 1708178473628,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6748424340",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6748424340&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 124,
+        "net": "ci",
+        "code": "ci14504",
+        "ids": ",us6748424340,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 7.827,
+        "rms": 1.59,
+        "gap": 283.7,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.7 - Iran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.7098,
+          31.9199,
+          3.016
+        ]
+      },
+      "id": "us6748424340"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "143 km from Japan",
+        "time": 1764068098915,
+        "updated": 1764069982412,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7588375456",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7588375456&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 63,
+        "net": "uu",
+        "code": "uu12015",
+        "ids": ",us7588375456,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.906,
+        "rms": 1.64,
+        "gap": 148.3,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.1 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.8154,
+          42.2205,
+          38.748
+        ]
+      },
+      "id": "us7588375456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "53 km from Chile/Peru",
+        "time": 1753924517168,
+        "updated": 1753924914217,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6365443593",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6365443593&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 67,
+        "net": "nn",
+        "code": "nn13064",
+        "ids": ",us6365443593,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.438,
+        "rms": 0.57,
+        "gap": 205.5,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.4 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6077,
+          -14.733,
+          31.122
+        ]
+      },
+      "id": "us6365443593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "8 km from Japan",
+        "time": 1727160134602,
+        "updated": 1727163538451,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7509409640",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7509409640&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 55,
+        "net": "uu",
+        "code": "uu58713",
+        "ids": ",us7509409640,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.896,
+        "rms": 0.92,
+        "gap": 150.7,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.2 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.832,
+          43.3861,
+          64.712
+        ]
+      },
+      "id": "us7509409640"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "140 km from Philippines",
+        "time": 1747710096262,
+        "updated": 1747711819079,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7431625320",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7431625320&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 52,
+        "net": "uu",
+        "code": "uu42085",
+        "ids": ",us7431625320,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.965,
+        "rms": 0.88,
+        "gap": 32.8,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.2 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.7053,
+          18.4085,
+          48.003
+        ]
+      },
+      "id": "us7431625320"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.5,
+        "place": "97 km from Japan",
+        "time": 1723183842566,
+        "updated": 1723187355708,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6966660790",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6966660790&format=geojson",
+        "felt": 50,
+        "cdi": 2.7,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 204,
+        "net": "ci",
+        "code": "ci41567",
+        "ids": ",us6966660790,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": 15,
+        "dmin": 8.258,
+        "rms": 1.67,
+        "gap": 106.5,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 3.5 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.748,
+          34.6548,
+          22.132
+        ]
+      },
+      "id": "us6966660790"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "196 km from Nepal/Tibet",
+        "time": 1746194329901,
+        "updated": 1746196860396,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7430554811",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7430554811&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 50,
+        "net": "hv",
+        "code": "hv34765",
+        "ids": ",us7430554811,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.29,
+        "rms": 0.85,
+        "gap": 254.1,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.1 - Nepal/Tibet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9605,
+          30.0986,
+          66.797
+        ]
+      },
+      "id": "us7430554811"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "122 km from Iran",
+        "time": 1726228861739,
+        "updated": 1726230566099,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6671260860",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6671260860&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 57,
+        "net": "ak",
+        "code": "ak65764",
+        "ids": ",us6671260860,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.287,
+        "rms": 1.04,
+        "gap": 21.0,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.1 - Iran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.3794,
+          38.7397,
+          30.03
+        ]
+      },
+      "id": "us6671260860"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "45 km from Japan",
+        "time": 1722608706954,
+        "updated": 1722610733409,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6387610499",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6387610499&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 76,
+        "net": "uu",
+        "code": "uu32469",
+        "ids": ",us6387610499,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.167,
+        "rms": 0.62,
+        "gap": 115.1,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.4 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.687,
+          42.8443,
+          24.988
+        ]
+      },
+      "id": "us6387610499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "11 km from Japan",
+        "time": 1713548961477,
+        "updated": 1713549924693,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6088754472",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6088754472&format=geojson",
+        "felt": 107,
+        "cdi": 2.0,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 113,
+        "net": "se",
+        "code": "se88261",
+        "ids": ",us6088754472,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": 134,
+        "dmin": 8.846,
+        "rms": 1.2,
+        "gap": 189.5,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 3.0 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.4369,
+          31.5377,
+          22.364
+        ]
+      },
+      "id": "us6088754472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "176 km from Greece/Italy",
+        "time": 1721979552645,
+        "updated": 1721979794129,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7906207876",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7906207876&format=geojson",
+        "felt": 10,
+        "cdi": 1.6,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 146,
+        "net": "ci",
+        "code": "ci41320",
+        "ids": ",us7906207876,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": 91,
+        "dmin": 9.475,
+        "rms": 1.46,
+        "gap": 210.9,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 3.0 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.9826,
+          36.205,
+          4.222
+        ]
+      },
+      "id": "us7906207876"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "183 km from Mexico/C.America",
+        "time": 1723660895675,
+        "updated": 1723663396527,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6588903475",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6588903475&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 72,
+        "net": "ci",
+        "code": "ci49414",
+        "ids": ",us6588903475,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.737,
+        "rms": 1.67,
+        "gap": 261.5,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.0 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.5513,
+          17.2536,
+          21.444
+        ]
+      },
+      "id": "us6588903475"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "72 km from Japan",
+        "time": 1733718646021,
+        "updated": 1733721304828,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6304077844",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6304077844&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 89,
+        "net": "uu",
+        "code": "uu97838",
+        "ids": ",us6304077844,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.687,
+        "rms": 1.75,
+        "gap": 164.6,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.3 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.0307,
+          30.2829,
+          37.643
+        ]
+      },
+      "id": "us6304077844"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "37 km from Central Asia",
+        "time": 1754413906943,
+        "updated": 1754415762788,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7753334770",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7753334770&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 97,
+        "net": "us",
+        "code": "us96813",
+        "ids": ",us7753334770,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.377,
+        "rms": 1.35,
+        "gap": 164.2,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.2 - Central Asia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.7147,
+          49.2443,
+          61.991
+        ]
+      },
+      "id": "us7753334770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "36 km from Turkey",
+        "time": 1753399095345,
+        "updated": 1753402633372,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6798755981",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6798755981&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 91,
+        "net": "se",
+        "code": "se92713",
+        "ids": ",us6798755981,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.299,
+        "rms": 1.65,
+        "gap": 124.4,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.4 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.9136,
+          39.3468,
+          17.896
+        ]
+      },
+      "id": "us6798755981"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.8,
+        "place": "199 km from Mexico/C.America",
+        "time": 1752983561686,
+        "updated": 1752983834348,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7352602534",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7352602534&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 139,
+        "net": "us",
+        "code": "us67207",
+        "ids": ",us7352602534,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.297,
+        "rms": 1.22,
+        "gap": 269.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.8 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.122,
+          19.5692,
+          5.208
+        ]
+      },
+      "id": "us7352602534"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "172 km from Indonesia",
+        "time": 1733851580278,
+        "updated": 1733852751127,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6443163690",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6443163690&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 48,
+        "net": "se",
+        "code": "se89444",
+        "ids": ",us6443163690,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.596,
+        "rms": 1.12,
+        "gap": 159.1,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.1 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.6124,
+          -5.9303,
+          133.783
+        ]
+      },
+      "id": "us6443163690"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "78 km from Japan",
+        "time": 1763140300000,
+        "updated": 1763141355480,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7450940136",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7450940136&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 126,
+        "net": "se",
+        "code": "se95694",
+        "ids": ",us7450940136,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.994,
+        "rms": 1.17,
+        "gap": 278.5,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.6 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.4817,
+          38.6364,
+          67.052
+        ]
+      },
+      "id": "us7450940136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.4,
+        "place": "57 km from Chile/Peru",
+        "time": 1705667573005,
+        "updated": 1705670366994,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6541840376",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6541840376&format=geojson",
+        "felt": 4,
+        "cdi": 2.8,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 159,
+        "net": "hv",
+        "code": "hv40471",
+        "ids": ",us6541840376,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": 13,
+        "dmin": 4.064,
+        "rms": 1.5,
+        "gap": 192.3,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 3.4 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.7347,
+          -11.0813,
+          103.476
+        ]
+      },
+      "id": "us6541840376"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "98 km from Japan",
+        "time": 1741215574439,
+        "updated": 1741217767304,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7696477837",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7696477837&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 79,
+        "net": "us",
+        "code": "us82918",
+        "ids": ",us7696477837,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.365,
+        "rms": 0.7,
+        "gap": 273.9,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.3462,
+          43.71,
+          24.959
+        ]
+      },
+      "id": "us7696477837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "124 km from Pakistan/Afghanistan",
+        "time": 1765578571575,
+        "updated": 1765580494619,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6986450386",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6986450386&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 67,
+        "net": "hv",
+        "code": "hv24815",
+        "ids": ",us6986450386,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.586,
+        "rms": 1.11,
+        "gap": 197.0,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.4 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.3158,
+          31.9967,
+          23.53
+        ]
+      },
+      "id": "us6986450386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "43 km from Central Asia",
+        "time": 1728602383366,
+        "updated": 1728605908592,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6795591114",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6795591114&format=geojson",
+        "felt": 12,
+        "cdi": 1.6,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 146,
+        "net": "nc",
+        "code": "nc58831",
+        "ids": ",us6795591114,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": 5,
+        "dmin": 2.867,
+        "rms": 1.1,
+        "gap": 259.6,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 3.0 - Central Asia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.5392,
+          37.5041,
+          26.548
+        ]
+      },
+      "id": "us6795591114"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "30 km from Greece/Italy",
+        "time": 1739658441105,
+        "updated": 1739660981244,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6480546660",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6480546660&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 95,
+        "net": "nn",
+        "code": "nn22603",
+        "ids": ",us6480546660,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.732,
+        "rms": 1.42,
+        "gap": 261.1,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.5 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6431,
+          35.1346,
+          16.609
+        ]
+      },
+      "id": "us6480546660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "78 km from Pakistan/Afghanistan",
+        "time": 1761675619372,
+        "updated": 1761677483780,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6406138870",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6406138870&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 150,
+        "net": "ci",
+        "code": "ci80770",
+        "ids": ",us6406138870,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.552,
+        "rms": 0.67,
+        "gap": 17.4,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.9 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.5402,
+          32.3871,
+          7.272
+        ]
+      },
+      "id": "us6406138870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "171 km from Indonesia",
+        "time": 1704586956840,
+        "updated": 1704587495746,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6898558792",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6898558792&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 49,
+        "net": "se",
+        "code": "se93556",
+        "ids": ",us6898558792,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 6.422,
+        "rms": 1.79,
+        "gap": 58.6,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.5499,
+          -3.3532,
+          37.572
+        ]
+      },
+      "id": "us6898558792"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "35 km from Mexico/C.America",
+        "time": 1749062844385,
+        "updated": 1749064645202,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6056788740",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6056788740&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 93,
+        "net": "us",
+        "code": "us54519",
+        "ids": ",us6056788740,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.726,
+        "rms": 0.57,
+        "gap": 192.1,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.1 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.4389,
+          29.1099,
+          56.869
+        ]
+      },
+      "id": "us6056788740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.5,
+        "place": "90 km from Japan",
+        "time": 1747665322840,
+        "updated": 1747666590306,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7252804051",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7252804051&format=geojson",
+        "felt": 18,
+        "cdi": 2.6,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 159,
+        "net": "nn",
+        "code": "nn59424",
+        "ids": ",us7252804051,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": 46,
+        "dmin": 10.844,
+        "rms": 0.94,
+        "gap": 184.6,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 3.5 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.1776,
+          43.2591,
+          51.215
+        ]
+      },
+      "id": "us7252804051"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "53 km from Japan",
+        "time": 1729877877000,
+        "updated": 1729880050399,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6993169297",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6993169297&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 106,
+        "net": "us",
+        "code": "us48894",
+        "ids": ",us6993169297,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 11.367,
+        "rms": 1.34,
+        "gap": 291.2,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.4 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.2286,
+          37.2363,
+          245.368
+        ]
+      },
+      "id": "us6993169297"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "77 km from Philippines",
+        "time": 1724341778159,
+        "updated": 1724344873172,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6924478695",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6924478695&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 101,
+        "net": "ci",
+        "code": "ci18604",
+        "ids": ",us6924478695,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 2.272,
+        "rms": 0.73,
+        "gap": 102.3,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.5 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.2383,
+          6.1084,
+          16.214
+        ]
+      },
+      "id": "us6924478695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.4,
+        "place": "51 km from Pakistan/Afghanistan",
+        "time": 1720364962204,
+        "updated": 1720368131386,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7643417441",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7643417441&format=geojson",
+        "felt": 8,
+        "cdi": 3.4,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 149,
+        "net": "ak",
+        "code": "ak47940",
+        "ids": ",us7643417441,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": 37,
+        "dmin": 9.181,
+        "rms": 1.08,
+        "gap": 186.2,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 3.4 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.7833,
+          35.4459,
+          48.994
+        ]
+      },
+      "id": "us7643417441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "43 km from Mexico/C.America",
+        "time": 1743788530240,
+        "updated": 1743788608190,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7413418463",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7413418463&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 108,
+        "net": "hv",
+        "code": "hv78548",
+        "ids": ",us7413418463,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.498,
+        "rms": 1.32,
+        "gap": 235.8,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.9 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.315,
+          23.4376,
+          66.307
+        ]
+      },
+      "id": "us7413418463"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "12 km from Pakistan/Afghanistan",
+        "time": 1744554072586,
+        "updated": 1744556775443,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7658916062",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7658916062&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 83,
+        "net": "nn",
+        "code": "nn37639",
+        "ids": ",us7658916062,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.956,
+        "rms": 1.03,
+        "gap": 74.2,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.2 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.1876,
+          33.1687,
+          4.431
+        ]
+      },
+      "id": "us7658916062"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "88 km from Japan",
+        "time": 1735591078489,
+        "updated": 1735592165112,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7791721409",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7791721409&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 97,
+        "net": "nc",
+        "code": "nc67283",
+        "ids": ",us7791721409,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.51,
+        "rms": 0.52,
+        "gap": 202.1,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.9 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          137.9963,
+          38.2116,
+          156.389
+        ]
+      },
+      "id": "us7791721409"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "165 km from Chile/Peru",
+        "time": 1748764965245,
+        "updated": 1748768466022,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6096885350",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6096885350&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 86,
+        "net": "nn",
+        "code": "nn36634",
+        "ids": ",us6096885350,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.371,
+        "rms": 1.12,
+        "gap": 202.4,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.3 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.547,
+          -8.691,
+          29.516
+        ]
+      },
+      "id": "us6096885350"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "142 km from Turkey",
+        "time": 1738965078099,
+        "updated": 1738965657126,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7200248177",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7200248177&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 72,
+        "net": "nn",
+        "code": "nn65191",
+        "ids": ",us7200248177,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 1.11,
+        "rms": 0.83,
+        "gap": 195.8,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.1 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2514,
+          39.3096,
+          64.303
+        ]
+      },
+      "id": "us7200248177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "197 km from Philippines",
+        "time": 1745842542007,
+        "updated": 1745846031150,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7479910448",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7479910448&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 57,
+        "net": "uu",
+        "code": "uu28778",
+        "ids": ",us7479910448,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.66,
+        "rms": 1.0,
+        "gap": 30.9,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.2 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.2343,
+          9.5923,
+          8.423
+        ]
+      },
+      "id": "us7479910448"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "44 km from Turkey",
+        "time": 1711408018261,
+        "updated": 1711409725553,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6152103719",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6152103719&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 86,
+        "net": "se",
+        "code": "se88046",
+        "ids": ",us6152103719,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.892,
+        "rms": 1.4,
+        "gap": 215.1,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.3 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3046,
+          38.253,
+          34.404
+        ]
+      },
+      "id": "us6152103719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "32 km from Japan",
+        "time": 1743760088803,
+        "updated": 1743761253379,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6160608160",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6160608160&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 108,
+        "net": "ci",
+        "code": "ci36665",
+        "ids": ",us6160608160,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.226,
+        "rms": 0.34,
+        "gap": 145.0,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.5 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.4852,
+          36.8958,
+          30.515
+        ]
+      },
+      "id": "us6160608160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "131 km from Mexico/C.America",
+        "time": 1713684177771,
+        "updated": 1713685243703,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7209396299",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7209396299&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 43,
+        "net": "se",
+        "code": "se86784",
+        "ids": ",us7209396299,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.876,
+        "rms": 1.77,
+        "gap": 235.6,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.0 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.9942,
+          28.4628,
+          56.051
+        ]
+      },
+      "id": "us7209396299"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.5,
+        "place": "88 km from Japan",
+        "time": 1731753539949,
+        "updated": 1731754296876,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6942280898",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6942280898&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 96,
+        "net": "ak",
+        "code": "ak99243",
+        "ids": ",us6942280898,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.723,
+        "rms": 1.59,
+        "gap": 250.4,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.5 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.1507,
+          37.7946,
+          254.449
+        ]
+      },
+      "id": "us6942280898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "148 km from Mexico/C.America",
+        "time": 1708509759471,
+        "updated": 1708511244641,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6847946251",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6847946251&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 55,
+        "net": "hv",
+        "code": "hv26272",
+        "ids": ",us6847946251,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 7.267,
+        "rms": 1.73,
+        "gap": 119.6,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.0 - Mexico/C.America"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.8222,
+          24.0683,
+          29.041
+        ]
+      },
+      "id": "us6847946251"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "123 km from Japan",
+        "time": 1705065588196,
+        "updated": 1705068188062,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6315569381",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6315569381&format=geojson",
+        "felt": 6,
+        "cdi": 1.5,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 137,
+        "net": "ak",
+        "code": "ak68067",
+        "ids": ",us6315569381,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": 47,
+        "dmin": 4.952,
+        "rms": 1.75,
+        "gap": 252.0,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 3.0 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.0954,
+          44.8608,
+          22.093
+        ]
+      },
+      "id": "us6315569381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "171 km from Chile/Peru",
+        "time": 1762463822361,
+        "updated": 1762464705306,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7860900335",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7860900335&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 92,
+        "net": "nc",
+        "code": "nc71897",
+        "ids": ",us7860900335,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.173,
+        "rms": 0.72,
+        "gap": 28.9,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -65.8653,
+          -8.4042,
+          19.804
+        ]
+      },
+      "id": "us7860900335"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "155 km from Pakistan/Afghanistan",
+        "time": 1710555128707,
+        "updated": 1710556943300,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7118364478",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7118364478&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 96,
+        "net": "nc",
+        "code": "nc43470",
+        "ids": ",us7118364478,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 7.31,
+        "rms": 0.52,
+        "gap": 73.3,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.7 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.1212,
+          34.2088,
+          47.947
+        ]
+      },
+      "id": "us7118364478"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.2,
+        "place": "70 km from Chile/Peru",
+        "time": 1733428729790,
+        "updated": 1733431015661,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7304857381",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7304857381&format=geojson",
+        "felt": 1,
+        "cdi": 3.1,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 179,
+        "net": "hv",
+        "code": "hv75119",
+        "ids": ",us7304857381,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": 89,
+        "dmin": 3.702,
+        "rms": 1.63,
+        "gap": 31.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 3.2 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.5319,
+          -45.8852,
+          1.524
+        ]
+      },
+      "id": "us7304857381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "155 km from Pakistan/Afghanistan",
+        "time": 1742056535645,
+        "updated": 1742056623807,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7696398445",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7696398445&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 87,
+        "net": "nc",
+        "code": "nc78268",
+        "ids": ",us7696398445,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.02,
+        "rms": 1.54,
+        "gap": 194.6,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.3 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7793,
+          27.6156,
+          199.428
+        ]
+      },
+      "id": "us7696398445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "66 km from Indonesia",
+        "time": 1745198805489,
+        "updated": 1745200775464,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6323783898",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6323783898&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 88,
+        "net": "ak",
+        "code": "ak54028",
+        "ids": ",us6323783898,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.351,
+        "rms": 1.53,
+        "gap": 51.8,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.0 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.2954,
+          -4.9469,
+          29.501
+        ]
+      },
+      "id": "us6323783898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "67 km from Chile/Peru",
+        "time": 1715401985084,
+        "updated": 1715402910672,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6492425845",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6492425845&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 80,
+        "net": "ci",
+        "code": "ci37981",
+        "ids": ",us6492425845,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.656,
+        "rms": 0.82,
+        "gap": 151.8,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.3 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4196,
+          -47.944,
+          148.094
+        ]
+      },
+      "id": "us6492425845"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "168 km from Indonesia",
+        "time": 1745576550449,
+        "updated": 1745578264000,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7109624089",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7109624089&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 90,
+        "net": "hv",
+        "code": "hv97495",
+        "ids": ",us7109624089,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 6.073,
+        "rms": 1.62,
+        "gap": 24.4,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.3 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.9804,
+          1.9226,
+          29.371
+        ]
+      },
+      "id": "us7109624089"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "57 km from Indonesia",
+        "time": 1728927959832,
+        "updated": 1728928358111,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7768247104",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7768247104&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 72,
+        "net": "nn",
+        "code": "nn78668",
+        "ids": ",us7768247104,",
+        "sources": ",nn,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.374,
+        "rms": 0.35,
+        "gap": 62.4,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.2 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.7016,
+          -2.6603,
+          67.385
+        ]
+      },
+      "id": "us7768247104"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "27 km from Chile/Peru",
+        "time": 1752453260118,
+        "updated": 1752455811848,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6484613087",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6484613087&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 88,
+        "net": "ak",
+        "code": "ak66761",
+        "ids": ",us6484613087,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.823,
+        "rms": 0.45,
+        "gap": 73.7,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.1 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.9176,
+          -12.9283,
+          246.063
+        ]
+      },
+      "id": "us6484613087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "12 km from Iran",
+        "time": 1764761309545,
+        "updated": 1764764368982,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6583430191",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6583430191&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 42,
+        "net": "uu",
+        "code": "uu23973",
+        "ids": ",us6583430191,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 3.663,
+        "rms": 1.45,
+        "gap": 252.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Iran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.428,
+          36.6329,
+          8.345
+        ]
+      },
+      "id": "us6583430191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "102 km from Philippines",
+        "time": 1753913820823,
+        "updated": 1753915207942,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6203691901",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6203691901&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 49,
+        "net": "ak",
+        "code": "ak84439",
+        "ids": ",us6203691901,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.612,
+        "rms": 1.7,
+        "gap": 292.1,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.1 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.1339,
+          17.5809,
+          8.243
+        ]
+      },
+      "id": "us6203691901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "37 km from Pakistan/Afghanistan",
+        "time": 1759722011777,
+        "updated": 1759725191808,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7472518279",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7472518279&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 84,
+        "net": "ci",
+        "code": "ci91213",
+        "ids": ",us7472518279,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 11.453,
+        "rms": 1.4,
+        "gap": 149.4,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.0 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.5096,
+          35.5577,
+          219.605
+        ]
+      },
+      "id": "us7472518279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "100 km from Central Asia",
+        "time": 1751346414336,
+        "updated": 1751346952506,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7159147569",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7159147569&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 73,
+        "net": "ak",
+        "code": "ak90391",
+        "ids": ",us7159147569,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 0.844,
+        "rms": 0.83,
+        "gap": 255.5,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.1 - Central Asia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.7795,
+          40.4191,
+          18.904
+        ]
+      },
+      "id": "us7159147569"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "35 km from Chile/Peru",
+        "time": 1728789783641,
+        "updated": 1728790851303,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7910066499",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7910066499&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 47,
+        "net": "se",
+        "code": "se18769",
+        "ids": ",us7910066499,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.589,
+        "rms": 0.52,
+        "gap": 252.3,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.0 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.0681,
+          -20.8675,
+          64.083
+        ]
+      },
+      "id": "us7910066499"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "166 km from Indonesia",
+        "time": 1711658664632,
+        "updated": 1711660675173,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7151237233",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7151237233&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 72,
+        "net": "ak",
+        "code": "ak49647",
+        "ids": ",us7151237233,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.232,
+        "rms": 1.42,
+        "gap": 51.2,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.1 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.7611,
+          1.3249,
+          40.785
+        ]
+      },
+      "id": "us7151237233"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "94 km from Iran",
+        "time": 1763317763395,
+        "updated": 1763318557122,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7877674368",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7877674368&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 99,
+        "net": "uu",
+        "code": "uu69248",
+        "ids": ",us7877674368,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.18,
+        "rms": 1.76,
+        "gap": 276.3,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.6 - Iran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.1291,
+          30.2939,
+          32.003
+        ]
+      },
+      "id": "us7877674368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "42 km from Japan",
+        "time": 1745385168802,
+        "updated": 1745387691789,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6077364550",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6077364550&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 55,
+        "net": "ak",
+        "code": "ak40845",
+        "ids": ",us6077364550,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.023,
+        "rms": 0.77,
+        "gap": 285.1,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.3 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.0725,
+          33.6234,
+          56.726
+        ]
+      },
+      "id": "us6077364550"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.8,
+        "place": "167 km from Japan",
+        "time": 1761091176111,
+        "updated": 1761091288724,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7537836839",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7537836839&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 144,
+        "net": "se",
+        "code": "se79025",
+        "ids": ",us7537836839,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.278,
+        "rms": 0.44,
+        "gap": 39.1,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.8 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.5478,
+          32.0568,
+          221.945
+        ]
+      },
+      "id": "us7537836839"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.2,
+        "place": "135 km from Greece/Italy",
+        "time": 1711386134242,
+        "updated": 1711387168076,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7992393914",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7992393914&format=geojson",
+        "felt": 7,
+        "cdi": 3.5,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 157,
+        "net": "uu",
+        "code": "uu27760",
+        "ids": ",us7992393914,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": 115,
+        "dmin": 9.343,
+        "rms": 0.77,
+        "gap": 247.1,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 3.2 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.2066,
+          46.3168,
+          27.387
+        ]
+      },
+      "id": "us7992393914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.3,
+        "place": "109 km from Chile/Peru",
+        "time": 1764127807263,
+        "updated": 1764129902226,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6312948029",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6312948029&format=geojson",
+        "felt": 0,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 190,
+        "net": "ak",
+        "code": "ak26333",
+        "ids": ",us6312948029,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": 40,
+        "dmin": 4.479,
+        "rms": 0.63,
+        "gap": 266.8,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 3.3 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.7877,
+          -10.4433,
+          6.762
+        ]
+      },
+      "id": "us6312948029"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "88 km from Chile/Peru",
+        "time": 1709176597986,
+        "updated": 1709177024669,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7797956811",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7797956811&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 32,
+        "net": "hv",
+        "code": "hv37435",
+        "ids": ",us7797956811,",
+        "sources": ",hv,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 10.476,
+        "rms": 1.06,
+        "gap": 180.6,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.0 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3807,
+          -44.1673,
+          12.381
+        ]
+      },
+      "id": "us7797956811"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.0,
+        "place": "92 km from Iran",
+        "time": 1720496710419,
+        "updated": 1720498140456,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7796986135",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7796986135&format=geojson",
+        "felt": 6,
+        "cdi": 1.7,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 108,
+        "net": "uu",
+        "code": "uu56430",
+        "ids": ",us7796986135,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": 20,
+        "dmin": 3.05,
+        "rms": 1.54,
+        "gap": 98.8,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 3.0 - Iran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.571,
+          27.2899,
+          5.51
+        ]
+      },
+      "id": "us7796986135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.1,
+        "place": "92 km from Pakistan/Afghanistan",
+        "time": 1750962963208,
+        "updated": 1750963335178,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7689092914",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7689092914&format=geojson",
+        "felt": 51,
+        "cdi": 1.8,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 167,
+        "net": "uu",
+        "code": "uu42388",
+        "ids": ",us7689092914,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": 24,
+        "dmin": 9.584,
+        "rms": 0.67,
+        "gap": 46.9,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 3.1 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9406,
+          27.8926,
+          62.751
+        ]
+      },
+      "id": "us7689092914"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "6 km from Indonesia",
+        "time": 1743189726799,
+        "updated": 1743192233715,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7612661266",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7612661266&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 143,
+        "net": "us",
+        "code": "us25020",
+        "ids": ",us7612661266,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 7.827,
+        "rms": 0.8,
+        "gap": 64.9,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.9 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.6656,
+          -6.7,
+          191.943
+        ]
+      },
+      "id": "us7612661266"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "172 km from Chile/Peru",
+        "time": 1738266087202,
+        "updated": 1738266420544,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7512161662",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7512161662&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 43,
+        "net": "us",
+        "code": "us87563",
+        "ids": ",us7512161662,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.635,
+        "rms": 0.75,
+        "gap": 102.4,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.1 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.2784,
+          -12.4456,
+          17.573
+        ]
+      },
+      "id": "us7512161662"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "28 km from Greece/Italy",
+        "time": 1759947900299,
+        "updated": 1759948639306,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6995632307",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6995632307&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 82,
+        "net": "se",
+        "code": "se29897",
+        "ids": ",us6995632307,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 1.128,
+        "rms": 1.49,
+        "gap": 223.5,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.6 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.7875,
+          39.7971,
+          20.446
+        ]
+      },
+      "id": "us6995632307"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "9 km from Japan",
+        "time": 1712376609313,
+        "updated": 1712377161204,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7800099210",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7800099210&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 83,
+        "net": "uu",
+        "code": "uu40486",
+        "ids": ",us7800099210,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 7.824,
+        "rms": 0.66,
+        "gap": 253.6,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.6 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.3084,
+          35.2959,
+          3.968
+        ]
+      },
+      "id": "us7800099210"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 3.6,
+        "place": "192 km from Turkey",
+        "time": 1753733481749,
+        "updated": 1753736507208,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7167636799",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7167636799&format=geojson",
+        "felt": 2,
+        "cdi": 3.4,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 207,
+        "net": "ci",
+        "code": "ci48202",
+        "ids": ",us7167636799,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": 33,
+        "dmin": 11.391,
+        "rms": 1.37,
+        "gap": 165.4,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 3.6 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4497,
+          36.9807,
+          10.346
+        ]
+      },
+      "id": "us7167636799"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "19 km from Japan",
+        "time": 1765992085884,
+        "updated": 1765992842484,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6298365921",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6298365921&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 63,
+        "net": "se",
+        "code": "se10140",
+        "ids": ",us6298365921,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 9.324,
+        "rms": 1.19,
+        "gap": 251.2,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.2 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.3026,
+          42.8584,
+          22.307
+        ]
+      },
+      "id": "us6298365921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "45 km from Philippines",
+        "time": 1751131424857,
+        "updated": 1751133227673,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6748288908",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6748288908&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 137,
+        "net": "ci",
+        "code": "ci32222",
+        "ids": ",us6748288908,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.021,
+        "rms": 0.9,
+        "gap": 34.7,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 2.7 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0265,
+          7.5656,
+          69.149
+        ]
+      },
+      "id": "us6748288908"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.7,
+        "place": "153 km from Indonesia",
+        "time": 1715557882942,
+        "updated": 1715561279104,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7963773873",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7963773873&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 100,
+        "net": "uu",
+        "code": "uu26764",
+        "ids": ",us7963773873,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 5.664,
+        "rms": 1.48,
+        "gap": 162.1,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.7 - Indonesia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96.0936,
+          2.4478,
+          5.951
+        ]
+      },
+      "id": "us7963773873"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.9,
+        "place": "193 km from Pakistan/Afghanistan",
+        "time": 1762067812257,
+        "updated": 1762067947111,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6888363780",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6888363780&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 147,
+        "net": "ak",
+        "code": "ak67871",
+        "ids": ",us6888363780,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.307,
+        "rms": 1.32,
+        "gap": 225.2,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.9 - Pakistan/Afghanistan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.8372,
+          37.6438,
+          30.527
+        ]
+      },
+      "id": "us6888363780"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.2,
+        "place": "190 km from Japan",
+        "time": 1758179199176,
+        "updated": 1758182762136,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7226043552",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7226043552&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 86,
+        "net": "ak",
+        "code": "ak36808",
+        "ids": ",us7226043552,",
+        "sources": ",ak,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 12.134,
+        "rms": 1.38,
+        "gap": 196.2,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.2 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          137.7967,
+          39.4796,
+          63.517
+        ]
+      },
+      "id": "us7226043552"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "111 km from Chile/Peru",
+        "time": 1726696981489,
+        "updated": 1726698797441,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6871653613",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6871653613&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 36,
+        "net": "ci",
+        "code": "ci77742",
+        "ids": ",us6871653613,",
+        "sources": ",ci,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 13.15,
+        "rms": 0.52,
+        "gap": 97.0,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.0 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.4721,
+          -40.0668,
+          67.661
+        ]
+      },
+      "id": "us6871653613"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "146 km from Philippines",
+        "time": 1719119919651,
+        "updated": 1719120507445,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6683476737",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6683476737&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 56,
+        "net": "se",
+        "code": "se45982",
+        "ids": ",us6683476737,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 1.896,
+        "rms": 1.39,
+        "gap": 100.3,
+        "magType": "mww",
+        "type": "earthquake",
+        "title": "M 2.1 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.5455,
+          15.0911,
+          253.916
+        ]
+      },
+      "id": "us6683476737"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.4,
+        "place": "151 km from Turkey",
+        "time": 1711864538859,
+        "updated": 1711866441654,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6032480418",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6032480418&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 70,
+        "net": "uu",
+        "code": "uu74424",
+        "ids": ",us6032480418,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 4.267,
+        "rms": 1.58,
+        "gap": 196.2,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.4 - Turkey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6752,
+          37.7011,
+          45.128
+        ]
+      },
+      "id": "us6032480418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.6,
+        "place": "117 km from Philippines",
+        "time": 1754089027655,
+        "updated": 1754092489562,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7139373164",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7139373164&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "automatic",
+        "tsunami": 0,
+        "sig": 131,
+        "net": "se",
+        "code": "se94947",
+        "ids": ",us7139373164,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.399,
+        "rms": 1.01,
+        "gap": 185.9,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.6 - Philippines"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.0285,
+          11.0343,
+          276.128
+        ]
+      },
+      "id": "us7139373164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "188 km from Greece/Italy",
+        "time": 1716265575108,
+        "updated": 1716267102492,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7887323472",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us7887323472&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 97,
+        "net": "se",
+        "code": "se68664",
+        "ids": ",us7887323472,",
+        "sources": ",se,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 11.387,
+        "rms": 0.79,
+        "gap": 207.2,
+        "magType": "mw",
+        "type": "earthquake",
+        "title": "M 2.3 - Greece/Italy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.0973,
+          36.4546,
+          62.478
+        ]
+      },
+      "id": "us7887323472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.0,
+        "place": "56 km from Japan",
+        "time": 1761498146479,
+        "updated": 1761499591429,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6338648230",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6338648230&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 67,
+        "net": "us",
+        "code": "us35623",
+        "ids": ",us6338648230,",
+        "sources": ",us,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 14.77,
+        "rms": 1.09,
+        "gap": 211.5,
+        "magType": "md",
+        "type": "earthquake",
+        "title": "M 2.0 - Japan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.8044,
+          33.1962,
+          0.316
+        ]
+      },
+      "id": "us6338648230"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.3,
+        "place": "47 km from Chile/Peru",
+        "time": 1728506292226,
+        "updated": 1728509738777,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6525505889",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6525505889&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 70,
+        "net": "nc",
+        "code": "nc40567",
+        "ids": ",us6525505889,",
+        "sources": ",nc,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.489,
+        "rms": 1.31,
+        "gap": 207.1,
+        "magType": "mwr",
+        "type": "earthquake",
+        "title": "M 2.3 - Chile/Peru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.8565,
+          -6.9998,
+          59.294
+        ]
+      },
+      "id": "us6525505889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 2.1,
+        "place": "147 km from Nepal/Tibet",
+        "time": 1733803577201,
+        "updated": 1733804967624,
+        "tz": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6240293647",
+        "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us6240293647&format=geojson",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 70,
+        "net": "uu",
+        "code": "uu26864",
+        "ids": ",us6240293647,",
+        "sources": ",uu,",
+        "types": ",origin,phase-data,",
+        "nst": null,
+        "dmin": 8.434,
+        "rms": 1.01,
+        "gap": 185.4,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 2.1 - Nepal/Tibet"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.9749,
+          32.0605,
+          1.694
+        ]
+      },
+      "id": "us6240293647"
+    }
+  ]
+}

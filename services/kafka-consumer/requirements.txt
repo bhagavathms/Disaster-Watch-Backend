@@ -1,0 +1,10 @@
+# Kafka Consumer Processor — Module 3
+# Distributed NoSQL-Based Disaster Monitoring and Analytics System
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Python >= 3.9 required
+
+# Apache Kafka client (pure Python, no C extension required)
+kafka-python>=2.0.2

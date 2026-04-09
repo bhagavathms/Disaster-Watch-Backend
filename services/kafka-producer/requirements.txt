@@ -1,0 +1,10 @@
+# Kafka Producer Service — Module 2
+# Distributed NoSQL-Based Disaster Monitoring and Analytics System
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Python >= 3.9 required (uses built-in dict/list generics in type hints)
+
+# Apache Kafka client (pure Python, no C extension required)
+kafka-python>=2.0.2
