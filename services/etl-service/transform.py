@@ -15,9 +15,12 @@ carries all data needed to populate the four star-schema tables:
                             + FK references to the three dims above
 
 Geographic classification:
-    latitude/longitude are mapped to (country, region) using bounding-box
-    lookups covering the known disaster-prone regions in the dataset.
-    Coordinates that match no box fall back to a hemisphere label.
+    latitude/longitude → (country, region) via the `reverse_geocoder` library,
+    which performs a k-d tree nearest-neighbour lookup against a global city
+    database (no internet required, fully offline).
+
+    Install:  pip install reverse_geocoder
+    Fallback: if not installed, falls back to broad hemisphere labels.
 """
 
 from __future__ import annotations
@@ -28,69 +31,165 @@ from datetime import date, datetime
 
 log = logging.getLogger(__name__)
 
+# ── Reverse geocoder setup ────────────────────────────────────────────────────
 
-# ── Geographic bounding-box classifier ───────────────────────────────────────
-# Each entry: (lat_min, lat_max, lon_min, lon_max, country, region)
-# Ordered from most-specific to least-specific so the first match wins.
+try:
+    import reverse_geocoder as _rg
+    _RG_AVAILABLE = True
+    log.info("[TRANSFORM] reverse_geocoder loaded — using accurate country lookup")
+except ImportError:
+    _RG_AVAILABLE = False
+    log.warning(
+        "[TRANSFORM] reverse_geocoder not installed. Country/region will be approximate. "
+        "Run:  pip install reverse_geocoder"
+    )
 
-_REGION_BOXES: list[tuple] = [
-    # ── East Asia / Pacific ──────────────────────────────────────────────────
-    (30.0,  45.0,  129.0,  146.0, "Japan",          "East Asia"),
-    (18.0,  31.0,  127.0,  144.0, "Japan",          "Western Pacific"),
-    (10.0,  25.0,  140.0,  160.0, "Micronesia",     "Western Pacific"),
-    # ── Southeast Asia ───────────────────────────────────────────────────────
-    (-12.0,  6.0,  113.0,  129.0, "Indonesia",      "Southeast Asia"),
-    (  5.0, 20.0,  118.0,  132.0, "Philippines",    "Southeast Asia"),
-    (  7.0, 14.0,  102.0,  109.0, "Vietnam",        "Southeast Asia"),
-    # ── South Asia ───────────────────────────────────────────────────────────
-    (20.0,  27.0,   87.0,   93.0, "Bangladesh",     "South Asia"),
-    (24.0,  35.0,   63.0,   76.0, "Pakistan",       "South Asia"),
-    ( 7.0,  22.0,   80.0,   93.0, "India",          "South Asia"),
-    # ── Central Asia / Tibet ─────────────────────────────────────────────────
-    (28.0,  40.0,   72.0,  102.0, "China",          "Central Asia"),
-    # ── Middle East ──────────────────────────────────────────────────────────
-    (34.0,  43.0,   25.0,   44.0, "Turkey",         "Middle East"),
-    # ── South America ────────────────────────────────────────────────────────
-    (-46.0, -18.0, -80.0,  -62.0, "Chile",          "South America"),
-    (-16.0,  6.0,  -66.0,  -43.0, "Brazil",         "South America"),
-    (-14.0,  2.0,  -80.0,  -68.0, "Peru",           "South America"),
-    # ── North America ────────────────────────────────────────────────────────
-    (55.0,  68.0, -160.0, -143.0, "USA",            "North America - Alaska"),
-    (32.0,  44.0, -125.0, -113.0, "USA",            "North America - West Coast"),
-    (40.0,  50.0, -118.0, -100.0, "USA",            "North America - Mountain"),
-    (26.0,  35.0,  -97.0,  -79.0, "USA",            "North America - South"),
-    (35.0,  50.0,  -97.0,  -73.0, "USA",            "North America - East"),
-    # ── Caribbean ────────────────────────────────────────────────────────────
-    (12.0,  26.0,  -84.0,  -58.0, "Caribbean",      "Caribbean"),
-    # ── Europe ───────────────────────────────────────────────────────────────
-    (34.0,  42.0,   18.0,   28.0, "Greece",         "Southern Europe"),
-    (45.0,  52.0,   14.0,   24.0, "Central Europe", "Central Europe"),
-    (46.0,  55.0,   -2.0,    8.0, "Western Europe", "Western Europe"),
-    (50.0,  60.0,   -5.0,    2.0, "UK",             "Western Europe"),
-    # ── Africa ───────────────────────────────────────────────────────────────
-    ( 3.0,  12.0,    1.0,   11.0, "Nigeria",        "West Africa"),
-    ( 9.0,  22.0,    7.0,   24.0, "Chad / Niger",   "West Africa"),
-    ( 3.0,  15.0,   25.0,   40.0, "East Africa",    "East Africa"),
-    # ── Oceania / Australia ───────────────────────────────────────────────────
-    (-44.0, -10.0,  112.0,  155.0, "Australia",     "Oceania"),
-    # ── Siberia / Russia ─────────────────────────────────────────────────────
-    (49.0,  72.0,   79.0,  125.0, "Russia",         "Siberia"),
-]
+# ISO 3166-1 alpha-2 → full country name
+_CC_TO_COUNTRY: dict[str, str] = {
+    "AF": "Afghanistan",     "AL": "Albania",          "DZ": "Algeria",
+    "AO": "Angola",          "AR": "Argentina",        "AM": "Armenia",
+    "AU": "Australia",       "AZ": "Azerbaijan",       "BD": "Bangladesh",
+    "BO": "Bolivia",         "BA": "Bosnia-Herzegovina","BR": "Brazil",
+    "BN": "Brunei",          "BF": "Burkina Faso",     "BI": "Burundi",
+    "KH": "Cambodia",        "CM": "Cameroon",         "CA": "Canada",
+    "CF": "Central African Republic", "TD": "Chad",   "CL": "Chile",
+    "CN": "China",           "CO": "Colombia",         "CD": "DR Congo",
+    "CG": "Republic of Congo", "CR": "Costa Rica",    "CI": "Ivory Coast",
+    "CU": "Cuba",            "CY": "Cyprus",           "DJ": "Djibouti",
+    "DO": "Dominican Republic", "EC": "Ecuador",       "EG": "Egypt",
+    "SV": "El Salvador",     "ER": "Eritrea",          "ET": "Ethiopia",
+    "FJ": "Fiji",            "FR": "France",           "GA": "Gabon",
+    "GE": "Georgia",         "DE": "Germany",          "GH": "Ghana",
+    "GR": "Greece",          "GT": "Guatemala",        "GN": "Guinea",
+    "GW": "Guinea-Bissau",   "HT": "Haiti",            "HN": "Honduras",
+    "HU": "Hungary",         "IS": "Iceland",          "IN": "India",
+    "ID": "Indonesia",       "IR": "Iran",             "IQ": "Iraq",
+    "IT": "Italy",           "JM": "Jamaica",          "JP": "Japan",
+    "JO": "Jordan",          "KZ": "Kazakhstan",       "KE": "Kenya",
+    "KG": "Kyrgyzstan",      "LA": "Laos",             "LB": "Lebanon",
+    "LR": "Liberia",         "LY": "Libya",            "MG": "Madagascar",
+    "MW": "Malawi",          "MY": "Malaysia",         "ML": "Mali",
+    "MR": "Mauritania",      "MX": "Mexico",           "MN": "Mongolia",
+    "MA": "Morocco",         "MZ": "Mozambique",       "MM": "Myanmar",
+    "NA": "Namibia",         "NP": "Nepal",            "NZ": "New Zealand",
+    "NI": "Nicaragua",       "NE": "Niger",            "NG": "Nigeria",
+    "MK": "North Macedonia", "NO": "Norway",           "OM": "Oman",
+    "PK": "Pakistan",        "PA": "Panama",           "PG": "Papua New Guinea",
+    "PY": "Paraguay",        "PE": "Peru",             "PH": "Philippines",
+    "PL": "Poland",          "PT": "Portugal",         "RO": "Romania",
+    "RU": "Russia",          "RW": "Rwanda",           "SA": "Saudi Arabia",
+    "SN": "Senegal",         "SL": "Sierra Leone",     "SB": "Solomon Islands",
+    "SO": "Somalia",         "ZA": "South Africa",     "SS": "South Sudan",
+    "ES": "Spain",           "LK": "Sri Lanka",        "SD": "Sudan",
+    "SR": "Suriname",        "SY": "Syria",            "TJ": "Tajikistan",
+    "TZ": "Tanzania",        "TH": "Thailand",         "TL": "Timor-Leste",
+    "TG": "Togo",            "TO": "Tonga",            "TT": "Trinidad and Tobago",
+    "TN": "Tunisia",         "TR": "Turkey",           "TM": "Turkmenistan",
+    "UG": "Uganda",          "UA": "Ukraine",          "AE": "United Arab Emirates",
+    "GB": "United Kingdom",  "US": "United States",    "UY": "Uruguay",
+    "UZ": "Uzbekistan",      "VU": "Vanuatu",          "VE": "Venezuela",
+    "VN": "Vietnam",         "YE": "Yemen",            "ZM": "Zambia",
+    "ZW": "Zimbabwe",        "TW": "Taiwan",           "KR": "South Korea",
+    "KP": "North Korea",     "FM": "Micronesia",       "PW": "Palau",
+    "WS": "Samoa",           "KI": "Kiribati",         "PF": "French Polynesia",
+    "NC": "New Caledonia",   "GU": "Guam",
+}
+
+# ISO alpha-2 → broad sub-continental region (for dim_location.region)
+_CC_TO_REGION: dict[str, str] = {
+    # East Asia
+    "JP": "East Asia",  "CN": "East Asia",  "KR": "East Asia",
+    "KP": "East Asia",  "MN": "East Asia",  "TW": "East Asia",
+    # Southeast Asia
+    "ID": "Southeast Asia",  "PH": "Southeast Asia",  "VN": "Southeast Asia",
+    "TH": "Southeast Asia",  "MY": "Southeast Asia",  "MM": "Southeast Asia",
+    "KH": "Southeast Asia",  "LA": "Southeast Asia",  "TL": "Southeast Asia",
+    "BN": "Southeast Asia",  "SG": "Southeast Asia",
+    # South Asia
+    "IN": "South Asia",  "BD": "South Asia",  "PK": "South Asia",
+    "NP": "South Asia",  "LK": "South Asia",  "AF": "South Asia",
+    # Central Asia
+    "KZ": "Central Asia",  "UZ": "Central Asia",  "TM": "Central Asia",
+    "KG": "Central Asia",  "TJ": "Central Asia",
+    # Middle East
+    "TR": "Middle East",  "IR": "Middle East",  "IQ": "Middle East",
+    "SY": "Middle East",  "LB": "Middle East",  "JO": "Middle East",
+    "SA": "Middle East",  "YE": "Middle East",  "OM": "Middle East",
+    "AE": "Middle East",  "IL": "Middle East",  "CY": "Middle East",
+    # Caucasus
+    "GE": "Caucasus",  "AM": "Caucasus",  "AZ": "Caucasus",
+    # Europe
+    "GR": "Southern Europe",  "IT": "Southern Europe",  "ES": "Southern Europe",
+    "PT": "Southern Europe",  "MK": "Southern Europe",  "AL": "Southern Europe",
+    "BA": "Southern Europe",
+    "DE": "Central Europe",  "PL": "Central Europe",  "HU": "Central Europe",
+    "RO": "Central Europe",  "UA": "Eastern Europe",
+    "GB": "Western Europe",  "FR": "Western Europe",  "NO": "Northern Europe",
+    "IS": "Northern Europe",
+    # Russia/Siberia
+    "RU": "Siberia / Russia",
+    # North America
+    "US": "North America",  "CA": "North America",  "MX": "Central America",
+    "GT": "Central America",  "SV": "Central America",  "HN": "Central America",
+    "NI": "Central America",  "CR": "Central America",  "PA": "Central America",
+    # Caribbean
+    "CU": "Caribbean",  "JM": "Caribbean",  "HT": "Caribbean",
+    "DO": "Caribbean",  "TT": "Caribbean",
+    # South America
+    "CO": "South America",  "VE": "South America",  "EC": "South America",
+    "PE": "South America",  "BR": "South America",  "BO": "South America",
+    "CL": "South America",  "AR": "South America",  "PY": "South America",
+    "UY": "South America",  "SR": "South America",
+    # Africa
+    "NG": "West Africa",  "GH": "West Africa",  "CI": "West Africa",
+    "SN": "West Africa",  "ML": "West Africa",  "BF": "West Africa",
+    "GN": "West Africa",  "SL": "West Africa",  "LR": "West Africa",
+    "MR": "West Africa",  "NE": "West Africa",  "TD": "West Africa",
+    "CM": "Central Africa",  "CF": "Central Africa",  "GA": "Central Africa",
+    "CG": "Central Africa",  "CD": "Central Africa",  "AO": "Central Africa",
+    "ET": "East Africa",  "KE": "East Africa",  "TZ": "East Africa",
+    "UG": "East Africa",  "RW": "East Africa",  "BI": "East Africa",
+    "SO": "East Africa",  "DJ": "East Africa",  "ER": "East Africa",
+    "SD": "East Africa",  "SS": "East Africa",
+    "ZA": "Southern Africa",  "MZ": "Southern Africa",  "ZW": "Southern Africa",
+    "ZM": "Southern Africa",  "MW": "Southern Africa",  "NA": "Southern Africa",
+    "DZ": "North Africa",  "LY": "North Africa",  "EG": "North Africa",
+    "MA": "North Africa",  "TN": "North Africa",
+    "MG": "Indian Ocean",
+    # Oceania
+    "AU": "Oceania",  "NZ": "Oceania",  "PG": "Oceania",  "FJ": "Oceania",
+    "VU": "Oceania",  "SB": "Oceania",  "TO": "Oceania",  "WS": "Oceania",
+    "FM": "Oceania",  "PW": "Oceania",  "KI": "Oceania",
+    "PF": "Oceania",  "NC": "Oceania",  "GU": "Oceania",
+}
 
 
 def _classify_location(lat: float, lon: float) -> tuple[str, str]:
     """
     Return (country, region) for the given WGS-84 coordinates.
-    Falls back to a broad hemisphere label if no bounding box matches.
-    """
-    for lat_lo, lat_hi, lon_lo, lon_hi, country, region in _REGION_BOXES:
-        if lat_lo <= lat <= lat_hi and lon_lo <= lon <= lon_hi:
-            return country, region
 
-    # Hemisphere fallback
+    Primary:  reverse_geocoder k-d tree lookup (accurate, offline, fast).
+    Fallback: hemisphere label when reverse_geocoder is not installed.
+    """
+    if _RG_AVAILABLE:
+        try:
+            hits = _rg.search((lat, lon), verbose=False)
+            if hits:
+                cc      = hits[0].get("cc", "")
+                country = _CC_TO_COUNTRY.get(cc, cc or "Unknown")
+                region  = _CC_TO_REGION.get(cc, _hemisphere(lat, lon))
+                return country, region
+        except Exception as exc:
+            log.debug("[TRANSFORM] reverse_geocoder error at (%.3f, %.3f): %s", lat, lon, exc)
+
+    # Offline fallback
+    return "Unknown", _hemisphere(lat, lon)
+
+
+def _hemisphere(lat: float, lon: float) -> str:
     ns = "North" if lat >= 0 else "South"
     ew = "East"  if lon >= 0 else "West"
-    return "Unknown", f"{ns} {ew} Hemisphere"
+    return f"{ns} {ew} Hemisphere"
 
 
 # ── Transformed event dataclass ───────────────────────────────────────────────
@@ -139,12 +238,6 @@ def transform(raw_events: list[dict]) -> list[TransformedEvent]:
     objects ready for loading into the PostgreSQL star schema.
 
     Records with missing or unparseable fields are skipped with a warning.
-
-    Args:
-        raw_events: Output of extract.extract() -- flat dicts from MongoDB.
-
-    Returns:
-        List of TransformedEvent objects (one per successfully processed event).
     """
     results: list[TransformedEvent] = []
     skipped = 0
@@ -172,31 +265,22 @@ def _transform_one(rec: dict) -> TransformedEvent:
     lon = float(rec["longitude"])
     country, region = _classify_location(lat, lon)
 
-    # event_time may arrive as a timezone-aware datetime (from MongoDB BSON)
-    # or as a string if the record was injected by a test harness.
     et = rec["event_time"]
     if isinstance(et, str):
         et = datetime.strptime(et, "%Y-%m-%dT%H:%M:%SZ")
 
     return TransformedEvent(
-        # dim_event_type
         event_type_name = str(rec["event_type"]),
-
-        # dim_location
-        latitude  = lat,
-        longitude = lon,
-        country   = country,
-        region    = region,
-
-        # dim_time
-        date  = et.date(),
-        day   = et.day,
-        month = et.month,
-        year  = et.year,
-        hour  = et.hour,
-
-        # fact payload
-        event_id       = str(rec["event_id"]),
-        severity_level = str(rec["severity_level"]),
-        source         = str(rec.get("source", "")),
+        latitude        = lat,
+        longitude       = lon,
+        country         = country,
+        region          = region,
+        date            = et.date(),
+        day             = et.day,
+        month           = et.month,
+        year            = et.year,
+        hour            = et.hour,
+        event_id        = str(rec["event_id"]),
+        severity_level  = str(rec["severity_level"]),
+        source          = str(rec.get("source", "")),
     )

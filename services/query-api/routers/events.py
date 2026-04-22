@@ -21,11 +21,11 @@ from __future__ import annotations
 import math
 from datetime import datetime
 from enum import Enum
-from typing import Optional
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
-from dependencies import get_mongo
+from dependencies import get_mongo, get_postgres
 from models.schemas import (
     BoundingBox,
     EventResponse,
@@ -34,6 +34,7 @@ from models.schemas import (
     SearchEventsResponse,
 )
 from mongo_client import MongoReadClient
+from postgres_client import PostgresReadClient
 
 router = APIRouter(prefix="/events", tags=["Events  (MongoDB)"])
 
@@ -96,56 +97,41 @@ def get_recent_events(
 
 @router.get(
     "/search",
-    response_model=SearchEventsResponse,
     summary="Search Events",
     description=(
-        "Filter events by type, severity, and date range with cursor-based pagination. "
-        "Results are sorted by `event_time` descending."
+        "Filter events by date range, type (multi-value), country, and lat/lng proximity. "
+        "Backed by PostgreSQL so country and region fields are always present. "
+        "Returns {events, total}."
     ),
 )
 def search_events(
-    event_type:     Optional[EventType]      = Query(None),
-    severity_level: Optional[SeverityLevel]  = Query(None),
-    date_from:      Optional[datetime]        = Query(None,
-                                                description="ISO-8601 UTC  e.g. 2024-10-01T00:00:00Z"),
-    date_to:        Optional[datetime]        = Query(None,
-                                                description="ISO-8601 UTC  e.g. 2024-12-31T23:59:59Z"),
-    page:           int                       = Query(1,  ge=1),
-    page_size:      int                       = Query(20, ge=1, le=100),
-    mongo: MongoReadClient                    = Depends(get_mongo),
+    start_date:   Optional[str]         = Query(None, description="YYYY-MM-DD"),
+    end_date:     Optional[str]         = Query(None, description="YYYY-MM-DD"),
+    type:         Optional[List[str]]   = Query(None, description="Repeat for multiple: ?type=earthquake&type=fire"),
+    country:      Optional[str]         = Query(None, description="Partial match, e.g. Indonesia"),
+    region:       Optional[str]         = Query(None, description="Exact match, e.g. Americas"),
+    lat:          Optional[float]       = Query(None, description="Proximity centre latitude"),
+    lng:          Optional[float]       = Query(None, description="Proximity centre longitude"),
+    proximity_km: float                 = Query(500.0, description="Radius in km when lat/lng provided"),
+    limit:        int                   = Query(20, ge=1, le=10000),
+    offset:       int                   = Query(0,  ge=0, description="Skip first N results for pagination"),
+    pg: PostgresReadClient              = Depends(get_postgres),
 ):
-    """
-    **Example requests:**
-
-    - `GET /events/search?event_type=flood&severity_level=CRITICAL`
-    - `GET /events/search?date_from=2024-11-01T00:00:00Z&page=2`
-    - `GET /events/search?event_type=storm&severity_level=HIGH&page_size=50`
-    """
-    if date_from and date_to and date_from > date_to:
-        raise HTTPException(
-            status_code=422,
-            detail="date_from must be earlier than date_to",
-        )
-
     try:
-        docs, total = mongo.search(
-            event_type     = event_type.value     if event_type     else None,
-            severity_level = severity_level.value if severity_level else None,
-            date_from      = date_from,
-            date_to        = date_to,
-            page           = page,
-            page_size      = page_size,
+        return pg.search_events(
+            start_date   = start_date,
+            end_date     = end_date,
+            event_types  = type,
+            country      = country,
+            region       = region,
+            lat          = lat,
+            lng          = lng,
+            proximity_km = proximity_km,
+            limit        = limit,
+            offset       = offset,
         )
     except Exception as exc:
-        raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}")
-
-    return SearchEventsResponse(
-        total     = total,
-        page      = page,
-        page_size = page_size,
-        pages     = math.ceil(total / page_size) if total > 0 else 0,
-        data      = [EventResponse(**d) for d in docs],
-    )
+        raise HTTPException(status_code=503, detail=f"PostgreSQL unavailable: {exc}")
 
 
 # ── GET /events/by-location ───────────────────────────────────────────────────

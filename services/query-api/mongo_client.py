@@ -42,10 +42,13 @@ class MongoReadClient:
         location.coordinates    -> longitude / latitude (float)
     """
 
+    _LIVE_COLLECTION = "live_events"
+
     def __init__(self, settings: MongoSettings) -> None:
-        self._settings = settings
-        self._client   = None
-        self._col      = None
+        self._settings  = settings
+        self._client    = None
+        self._col       = None
+        self._live_col  = None
 
     # ── Lifecycle ──────────────────────────────────────────────────────────────
 
@@ -68,7 +71,8 @@ class MongoReadClient:
                 f"Is mongod running?  Error: {exc}"
             ) from exc
 
-        self._col = self._client[self._settings.database][self._settings.collection]
+        self._col      = self._client[self._settings.database][self._settings.collection]
+        self._live_col = self._client[self._settings.database][self._LIVE_COLLECTION]
         log.info(
             "[MONGO] Connected  %s / %s.%s",
             self._settings.uri, self._settings.database, self._settings.collection,
@@ -198,7 +202,92 @@ class MongoReadClient:
         docs = self._col.find(query).limit(limit)
         return [self._normalise(d) for d in docs]
 
+    def get_new_since(self, since: datetime) -> list[dict]:
+        """
+        Return events inserted into MongoDB after `since` (by processed_at).
+        Used by the SSE streaming endpoint to poll for new events.
+        """
+        from pymongo import ASCENDING
+
+        if since.tzinfo is None:
+            since = since.replace(tzinfo=timezone.utc)
+
+        docs = (
+            self._col
+            .find({"processed_at": {"$gt": since}})
+            .sort("processed_at", ASCENDING)
+        )
+        return [self._normalise(d) for d in docs]
+
+    # ── Live events ───────────────────────────────────────────────────────────
+
+    def get_live_snapshot(self) -> list[dict]:
+        """
+        Return all documents currently in the live_events collection.
+        TTL ensures only the last 8 hours of generated events are present,
+        so this is always a small, frontend-safe payload (≤ ~960 events).
+        """
+        from pymongo import DESCENDING
+        docs = self._live_col.find({}).sort("event_time", DESCENDING)
+        return [self._normalise_live(d) for d in docs]
+
+    def get_live_since(self, since: datetime) -> list[dict]:
+        """
+        Return live events inserted after `since` (by processed_at).
+        Used by the SSE stream to deliver only new events each poll cycle.
+        """
+        from pymongo import ASCENDING
+        if since.tzinfo is None:
+            since = since.replace(tzinfo=timezone.utc)
+        docs = (
+            self._live_col
+            .find({"processed_at": {"$gt": since}})
+            .sort("processed_at", ASCENDING)
+        )
+        return [self._normalise_live(d) for d in docs]
+
+    def ensure_live_indexes(self) -> None:
+        """
+        Create TTL + polling indexes on live_events.
+        Safe to call repeatedly (create_index is idempotent for same keyPattern).
+        The TTL index is also created by live_generator.py, but calling it here
+        guarantees the collection is ready even before the generator is started.
+        """
+        from pymongo import ASCENDING
+        self._live_col.create_index(
+            [("event_time", ASCENDING)],
+            expireAfterSeconds=8 * 3600,
+            name="ttl_event_time",
+            background=True,
+        )
+        self._live_col.create_index(
+            [("processed_at", ASCENDING)],
+            name="idx_processed_at",
+            background=True,
+        )
+        log.info("[MONGO] Live event indexes verified (live_events)")
+
     # ── Internal normalisation ─────────────────────────────────────────────────
+
+    @staticmethod
+    def _normalise_live(doc: dict) -> dict:
+        """
+        Normalise a live_events document.  The generator stores lat/lon both
+        as top-level fields AND inside the GeoJSON `location` sub-document,
+        so we just strip internal Mongo fields and ensure all types are clean.
+        """
+        out = dict(doc)
+        out["event_id"] = str(out.pop("_id"))
+        out.pop("location", None)   # GeoJSON blob not needed by frontend
+        out.pop("is_live", None)    # internal flag
+        out["latitude"]  = float(out.get("latitude",  0.0))
+        out["longitude"] = float(out.get("longitude", 0.0))
+        # Serialise datetimes so JSON encoder doesn't choke
+        for key in ("event_time", "processed_at"):
+            val = out.get(key)
+            if isinstance(val, datetime):
+                out[key] = val.strftime("%Y-%m-%dT%H:%M:%SZ")
+        return out
 
     @staticmethod
     def _normalise(doc: dict) -> dict:

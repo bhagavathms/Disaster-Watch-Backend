@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 @dataclass
 class MongoSettings:
     """Connection settings for the MongoDB operational store."""
-    uri:        str = "mongodb://localhost:27017/"
+    uri:        str = "mongodb://localhost:28020/"  # mongos router
     database:   str = "disaster_db"
     collection: str = "disaster_events"
 
@@ -41,7 +41,7 @@ class Settings:
 # ── Module-level singleton (override via env vars) ────────────────────────────
 settings = Settings(
     mongo = MongoSettings(
-        uri        = os.getenv("MONGO_URI",        "mongodb://localhost:27017/"),
+        uri        = os.getenv("MONGO_URI",        "mongodb://localhost:28020/"),
         database   = os.getenv("MONGO_DATABASE",   "disaster_db"),
         collection = os.getenv("MONGO_COLLECTION", "disaster_events"),
     ),

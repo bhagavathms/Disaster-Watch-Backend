@@ -269,9 +269,7 @@ class EventProcessor:
 
         Returns:
             "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"
-                if the event passes the minimum threshold.
-            None
-                if severity_raw < min_threshold (sensor null or negligible event).
+                always — no events are dropped by severity.
 
         Lookup order (first match wins):
             CRITICAL  ← severity_raw >= thresholds["critical"]
@@ -281,9 +279,6 @@ class EventProcessor:
             DROP      ← severity_raw <  thresholds["min_threshold"]
         """
         t = SEVERITY_THRESHOLDS[event_type]
-
-        if severity_raw < t["min_threshold"]:
-            return None           # sensor null or negligible event → drop
 
         if severity_raw >= t["critical"]:  return "CRITICAL"
         if severity_raw >= t["high"]:      return "HIGH"

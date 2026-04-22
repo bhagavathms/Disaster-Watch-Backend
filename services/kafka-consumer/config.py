@@ -20,10 +20,10 @@ _DEFAULT_DATA_DIR = os.path.normpath(
 
 # ── Severity thresholds (single source of truth) ──────────────────────────────
 #
-# Each dict defines the filter + classification rules for one event type.
+# Each dict defines the classification rules for one event type.
+# No events are dropped — all events are stored with a severity level.
 #
-# severity_raw < min_threshold        → DROP  (sensor null or too minor to act on)
-# min_threshold <= raw < medium       → LOW
+# raw < medium  → LOW
 # medium        <= raw < high         → MEDIUM
 # high          <= raw < critical     → HIGH
 # critical      <= raw                → CRITICAL

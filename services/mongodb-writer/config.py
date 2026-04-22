@@ -45,7 +45,7 @@ class MongoConfig:
         "mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=rs0"
 
       Sharded cluster (advanced local):
-        "mongodb://localhost:27020/"    (mongos router)
+        "mongodb://localhost:28020/"    (mongos router)
 
     The application code is identical for all three — only this URI changes.
     Sharding and replication are infrastructure concerns, not application concerns.
@@ -61,10 +61,10 @@ class MongoConfig:
       50 is a sensible default for a streaming workload.
     """
 
-    uri:           str = "mongodb://localhost:27017/"
+    uri:           str = "mongodb://localhost:28020/"  # mongos router
     database:      str = "disaster_db"
     collection:    str = "disaster_events"
-    write_concern: str = "1"           # use "majority" with a real replica set
+    write_concern: str = "majority"    # confirmed by majority of replica-set members
     batch_size:    int = 50
 
 

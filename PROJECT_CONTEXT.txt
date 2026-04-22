@@ -1,0 +1,613 @@
+================================================================================
+  DISASTER WATCH BACKEND — COMPLETE PROJECT CONTEXT
+  For: Gemini (or any AI assistant) onboarding
+  Last updated: 2026-04-22
+================================================================================
+
+PROJECT NAME
+  Distributed NoSQL-Based Disaster Monitoring and Analytics System
+  ("Disaster Watch Backend")
+
+WHAT IT IS
+  A simulated real-world disaster data pipeline. It mimics how a real system
+  would aggregate disaster event data from multiple government/scientific sources
+  (USGS, NASA, NOAA), normalize it, stream it through Kafka, store it in
+  MongoDB (operational) and PostgreSQL (analytics), and expose a REST API.
+
+  This is a backend-only project. There is a separate frontend (not in this
+  repo) that connects to the FastAPI server on port 8000.
+
+TECH STACK
+  Language        : Python 3.11+
+  Streaming       : Apache Kafka (localhost:9092)
+  Operational DB  : MongoDB 8.2 sharded cluster (mongos on localhost:28020)
+                    database: disaster_db
+                    collections: disaster_events, live_events
+  Analytics DB    : PostgreSQL 18 (localhost:5432)
+                    database: disaster_dw
+                    star schema: dim_event_type, dim_location, dim_time,
+                                 fact_disaster_events
+  API             : FastAPI + uvicorn (port 8000)
+  Key libs        : pymongo, psycopg2-binary, kafka-python, h3 (hexagonal
+                    clustering), fastapi, uvicorn
+
+PLATFORM
+  Windows 11, bash shell. All paths use forward slashes in code.
+  Working directory: C:\Users\S Saday\OneDrive\Desktop\Disaster-Watch-Backend
+
+================================================================================
+  ARCHITECTURE: 6-MODULE PIPELINE
+================================================================================
+
+MODULE 1 — Synthetic Data Generation (generate_data.py + normalizer.py + main.py)
+  CRITICAL DESIGN PRINCIPLE:
+    Data is first generated in the NATIVE schema of each real-world source,
+    then normalized into a unified Kafka schema. This simulates how a real
+    system would aggregate from different agencies.
+
+  Step 1a: generate_data.py → raw source-schema records
+    Earthquake → USGS GeoJSON Feature (properties.mag, geometry.coordinates, etc.)
+    Fire       → NASA FIRMS MODIS     (frp, acq_date, acq_time, brightness, etc.)
+    Flood      → USGS HWM             (hwm_id, height_above_gnd_ft, peak_date, etc.)
+    Storm      → IBTrACS Best Track   (wmo_wind in knots, iso_time, sid, basin, etc.)
+
+    Written to: data/raw/earthquakes.json, fires.json, floods.json, storms.json
+
+  Step 1b: normalizer.py → unified Kafka schema
+    earthquake: severity_raw = properties.mag (Richter)
+    fire:       severity_raw = frp (MW, Fire Radiative Power)
+    flood:      severity_raw = height_above_gnd_ft × 30.48 (→ cm)
+    storm:      severity_raw = wmo_wind × 1.852 (knots → km/h)
+
+    Unified schema (7 required fields):
+      event_id    : str   — UUID v4
+      event_type  : str   — earthquake | fire | flood | storm
+      severity_raw: float — physical unit per type (see above)
+      latitude    : float — WGS-84
+      longitude   : float — WGS-84
+      timestamp   : str   — ISO-8601 UTC (YYYY-MM-DDTHH:MM:SSZ)
+      source      : str   — USGS | NASA-FIRMS | USGS-HWM | IBTrACS
+
+    Written to: data/earthquakes.json, fires.json, floods.json, storms.json
+
+  writer_service.py: validates unified schema, writes the data/ files
+  main.py: orchestrates all steps, supports --scale N, --skip-generate,
+           --skip-normalize flags
+
+  Geographic distribution:
+    Events are sampled from real-world hotspot zones (e.g. Japan trench for
+    earthquakes, Bangladesh delta for floods, Philippine Sea for storms,
+    Central African savanna for fires). Zones are defined as
+    (centre_lat, centre_lon, std_dev_degrees, weight) tuples in _CLUSTERS dict.
+    Coordinates drawn from Gaussian centred on chosen zone.
+
+  Temporal distribution:
+    - Year: 1980–2025, lognormal inter-annual variability per type
+      (earthquake ±15%, fire ±28%, flood ±22%, storm ±22%)
+    - Month: seasonal weights sourced from EMDAT/NASA FIRMS/IBTrACS
+      (e.g. floods peak Jul-Aug for Asian monsoon, fires peak Aug-Sep NH)
+    - Day/hour: uniform random within chosen month
+
+  Scale:
+    python main.py              →   ~400 events (scale=1)
+    python main.py --scale 100  →   ~40,000 events
+    python main.py --scale 1000 →   ~400,000 events
+    python main.py --scale 2500 →   ~1,000,000 events
+
+MODULE 2 — Kafka Producer (services/kafka-producer/producer.py)
+  Reads data/*.json files and publishes each event to the appropriate topic.
+  Topics: earthquakes-topic, fires-topic, floods-topic, storms-topic
+  --dry-run flag validates data without connecting to Kafka.
+
+MODULE 3 — Kafka Consumer + Processor (services/kafka-consumer/)
+  Consumes Kafka messages, applies schema validation and severity classification.
+
+  Severity thresholds (config.py):
+    earthquake: LOW <3.0, MEDIUM 3.0-5.0, HIGH 5.0-7.0, CRITICAL ≥7.0
+                (Richter magnitude; events below 1.5 dropped)
+    fire:       LOW <20 MW, MEDIUM 20-50, HIGH 50-200, CRITICAL ≥200 MW
+                (FRP; events below 5 MW dropped)
+    flood:      LOW <50cm, MEDIUM 50-200, HIGH 200-800, CRITICAL ≥800 cm
+                (water height; events below 5cm dropped)
+    storm:      LOW <62km/h, MEDIUM 62-120, HIGH 120-200, CRITICAL ≥200 km/h
+                (wind speed; events below 35 km/h dropped)
+
+  Output schema (ProcessedEvent dataclass):
+    event_id, event_type, severity_level, latitude, longitude,
+    event_time (renamed from timestamp), processed_at (NEW), source
+
+  --simulate flag reads from data/ files, bypassing Kafka.
+
+MODULE 4 — MongoDB Writer (services/mongodb-writer/writer.py)
+  Writes ProcessedEvent records to MongoDB disaster_db.disaster_events.
+  Creates 2dsphere index on "location" field for geospatial queries.
+  Document structure in MongoDB:
+    _id           : event_id (string UUID)
+    event_type    : str
+    severity_level: str (LOW | MEDIUM | HIGH | CRITICAL)
+    location      : {"type": "Point", "coordinates": [lon, lat]}
+    event_time    : datetime (UTC)
+    processed_at  : datetime (UTC)
+    source        : str
+
+MODULE 5 — ETL Service (services/etl-service/)
+  Batch ETL: MongoDB disaster_events → PostgreSQL star schema.
+  Files: etl_runner.py, extract.py, transform.py, load.py, db_mongo.py,
+         db_postgres.py
+
+  PostgreSQL star schema (disaster_dw database):
+    dim_event_type  : event_type_id (PK), event_type_name
+    dim_location    : location_id (PK), country, region, latitude, longitude
+    dim_time        : time_id (PK), date, day, month, year, hour
+    fact_disaster_events: fact_id (PK), event_id (UNIQUE), event_type_id (FK),
+                          location_id (FK), time_id (FK), severity_level, source
+
+  transform.py does reverse-geocoding (lat/lon → country/region) using a
+  static shapefile or zone lookup (not an external API).
+
+  ETL modes:
+    --simulate     : reads data/*.json instead of MongoDB (no Kafka/Mongo needed)
+    --dry-run      : extract + transform only, no PostgreSQL writes
+    --create-tables: DDL only, then exit
+    --since YYYY-MM-DD: incremental load from date
+    Deduplication: event_id UNIQUE constraint prevents double-inserts
+
+MODULE 6 — Query API (services/query-api/)
+  FastAPI application, port 8000.
+  uvicorn api:app --host 127.0.0.1 --port 8000 --reload
+
+  API docs: http://127.0.0.1:8000/docs
+
+  Database connections:
+    MongoDB : mongodb://localhost:28020/ (mongos router)
+    PostgreSQL: postgresql://postgres:postgres@localhost:5432/disaster_dw
+  Override via env vars: MONGO_URI, MONGO_DATABASE, MONGO_COLLECTION,
+                         POSTGRES_DSN, API_HOST, API_PORT
+
+  ROUTERS AND ENDPOINTS:
+
+  /events (MongoDB-backed, routers/events.py):
+    GET /events/recent              — latest N events (optional ?event_type=)
+    GET /events/search              — filtered+paginated search (type, severity,
+                                      date_from, date_to, page, page_size)
+    GET /events/by-location         — bounding box geospatial query
+
+  /analytics (PostgreSQL-backed, routers/analytics.py):
+    GET /analytics/event-counts     — total events per disaster type
+    GET /analytics/monthly-trends   — monthly counts (filter: event_type, year,
+                                      start_date, end_date, country)
+    GET /analytics/top-locations    — regions ranked by event count (filter: limit,
+                                      event_type)
+    GET /analytics/search           — flexible search with lat/lng proximity
+                                      (filter: start_date, end_date, event_types,
+                                       country, lat, lng, proximity_km, limit, offset)
+
+  /events/map (PostgreSQL + H3, routers/map.py):
+    GET /events/map/clusters        — spatial cluster aggregation for map rendering
+                                      (params: min_lat, max_lat, min_lon, max_lon,
+                                       zoom, start_date, end_date)
+                                      Uses H3 hexagonal clustering when h3 lib is
+                                      installed, falls back to square grid
+    GET /events/map/points          — individual events in viewport (zoom ≥ 10)
+
+  /realtime (MongoDB SSE, routers/realtime.py):
+    GET /realtime/stream            — SSE stream of new events (polls processed_at)
+
+  /live (MongoDB live_events, routers/live.py):
+    GET  /live/snapshot             — all active live events (last 8 hours)
+    GET  /live/stream               — SSE stream, polls every 1 second
+    POST /live/start?rate=10.0      — starts live_generator.py subprocess
+    POST /live/stop                 — stops live_generator.py
+    GET  /live/status               — generator running state
+
+  /health:
+    GET /health                     — MongoDB + PostgreSQL connectivity check
+
+  LIVE EVENTS SYSTEM (services/realtime-service/live_generator.py):
+    Runs as a subprocess launched by POST /live/start.
+    Generates synthetic live events every N seconds (default 10s).
+    Inserts to MongoDB disaster_db.live_events collection.
+    TTL index auto-expires documents after 8 hours.
+    At 10s rate → ~2880 events in the 8-hour live window.
+    Seeding: on startup, inserts 10-20 events spread over the last 8 hours.
+    Geographic distribution: separate weighted hotspot clusters for live events
+    (earthquake, fire, flood, storm zones in live_generator.py).
+    Severity: realistic distribution — LOW 40%, MEDIUM 35%, HIGH 18%, CRITICAL 7%.
+
+    live_events document structure:
+      _id, event_id, event_type, severity_level,
+      location: {"type": "Point", "coordinates": [lon, lat]},
+      latitude, longitude,   ← also stored at top level
+      event_time, processed_at, source, is_live: True
+
+================================================================================
+  FILE TREE (key files only)
+================================================================================
+
+Disaster-Watch-Backend/
+│
+├── generate_data.py          ← Module 1a: raw source-schema generators
+│                               (USGS/NASA FIRMS/USGS HWM/IBTrACS format)
+├── normalizer.py             ← Module 1b: raw → unified Kafka schema converter
+├── main.py                   ← Module 1 orchestrator (generate → normalize → write)
+├── writer_service.py         ← validates + writes unified data/ JSON files
+├── run_pipeline.py           ← runs all 6 modules end-to-end
+├── fix_year_distribution.py  ← one-time script: fixes PostgreSQL count imbalances
+│
+├── data/
+│   ├── raw/                  ← raw source schemas (USGS GeoJSON, NASA FIRMS, etc.)
+│   │   ├── earthquakes.json
+│   │   ├── fires.json
+│   │   ├── floods.json
+│   │   └── storms.json
+│   ├── earthquakes.json      ← unified Kafka schema (producer reads these)
+│   ├── fires.json
+│   ├── floods.json
+│   └── storms.json
+│
+├── services/
+│   ├── kafka-producer/
+│   │   ├── producer.py       ← Module 2: reads data/*.json, publishes to Kafka
+│   │   └── config.py
+│   │
+│   ├── kafka-consumer/
+│   │   ├── consumer.py       ← Module 3 runner
+│   │   ├── processor.py      ← Module 3: validation + severity classification
+│   │   └── config.py         ← SEVERITY_THRESHOLDS (single source of truth)
+│   │
+│   ├── mongodb-writer/
+│   │   ├── writer.py         ← Module 4: writes ProcessedEvent → MongoDB
+│   │   └── config.py
+│   │
+│   ├── etl-service/
+│   │   ├── etl_runner.py     ← Module 5 orchestrator
+│   │   ├── extract.py        ← MongoDB → Python dicts
+│   │   ├── transform.py      ← dicts → TransformedEvent (geocoding, time decomp)
+│   │   ├── load.py           ← TransformedEvent → PostgreSQL star schema
+│   │   ├── db_mongo.py       ← MongoDB extract client
+│   │   └── db_postgres.py    ← PostgreSQL DDL + write client
+│   │
+│   ├── query-api/
+│   │   ├── api.py            ← Module 6 FastAPI app
+│   │   ├── config.py         ← Settings (DB URIs, host, port)
+│   │   ├── mongo_client.py   ← MongoDB read client + live_events support
+│   │   ├── postgres_client.py← PostgreSQL read client + H3 map clustering
+│   │   ├── models/
+│   │   │   └── schemas.py    ← Pydantic response models
+│   │   └── routers/
+│   │       ├── events.py     ← /events/* (MongoDB)
+│   │       ├── analytics.py  ← /analytics/* (PostgreSQL)
+│   │       ├── map.py        ← /events/map/* (PostgreSQL + H3)
+│   │       ├── realtime.py   ← /realtime/stream (SSE)
+│   │       └── live.py       ← /live/* (live_events + subprocess control)
+│   │
+│   └── realtime-service/
+│       └── live_generator.py ← live event generator (subprocess)
+│
+└── logs/                     ← service log files
+
+================================================================================
+  HOW TO RUN
+================================================================================
+
+PREREQUISITES:
+  - MongoDB sharded cluster running (mongos on :28020)
+  - PostgreSQL running, database disaster_dw created (createdb disaster_dw)
+  - Kafka running on localhost:9092
+  - pip install fastapi uvicorn pymongo psycopg2-binary kafka-python h3
+
+FULL PIPELINE (one command):
+  python run_pipeline.py                 # all 6 modules, starts API at end
+  python run_pipeline.py --dry-run       # no MongoDB or PostgreSQL needed
+  python run_pipeline.py --scale 1000    # ~400,000 events
+
+STEP BY STEP:
+  # Step 1: Generate data
+  python main.py --scale 1000
+
+  # Step 2: Kafka producer (skip if using --simulate in ETL)
+  cd services/kafka-producer && python producer.py
+
+  # Step 3: Kafka consumer (skip if using --simulate)
+  cd services/kafka-consumer && python consumer.py --simulate
+
+  # Step 4: MongoDB writer (skip if using --simulate)
+  cd services/mongodb-writer && python writer.py --simulate
+
+  # Step 5: ETL (load PostgreSQL star schema)
+  cd services/etl-service && python etl_runner.py --simulate --create-tables
+
+  # Step 6: Start API
+  cd services/query-api && uvicorn api:app --port 8000 --reload
+
+LIVE EVENTS:
+  After starting the API, POST http://localhost:8000/live/start?rate=10
+  This starts live_generator.py as a background subprocess.
+  Frontend subscribes to GET http://localhost:8000/live/stream (SSE).
+
+================================================================================
+  KEY DESIGN DECISIONS AND CONSTRAINTS
+================================================================================
+
+1. RAW SCHEMA FIRST — This is the most important architectural constraint.
+   The data generation must produce records in native source schemas (USGS,
+   NASA FIRMS, USGS HWM, IBTrACS) BEFORE normalization. This simulates real
+   aggregation from disparate agencies. normalizer.py handles conversion.
+   DO NOT skip this step or generate directly in unified schema.
+
+2. DOWNSTREAM IS FROZEN — Kafka producer, consumer, ETL, and query-api
+   expect the unified 7-field schema. Never change this contract.
+   Only Module 1 (generation + normalization) changed during refactoring.
+
+3. MONGODB SHARDING — The MongoDB connection uses the mongos router on
+   :28020, NOT a standalone mongod on :27017. Always use port 28020.
+
+4. POSTGRESQL STAR SCHEMA — The ETL loads into a proper star schema.
+   fact_disaster_events has FK references to dim_event_type, dim_location,
+   dim_time. Querying joins these tables (see postgres_client.py queries).
+
+5. H3 HEXAGONAL CLUSTERING — The map endpoint uses Uber's H3 library for
+   zoom-level-aware hexagonal clustering. Falls back to square grid if h3
+   is not installed. Resolution varies by zoom level (res 2 at zoom 2-4,
+   up to res 5 at zoom 9).
+
+6. LIVE EVENTS TTL — The live_events MongoDB collection has a TTL index
+   on event_time that auto-expires documents after 8 hours. This bounds
+   the collection at ~2880 documents at 10s rate. Never insert to this
+   collection manually during normal operation.
+
+7. SSE TRANSPORT — Live streaming uses Server-Sent Events (SSE) over HTTP,
+   NOT UDP. SSE is appropriate for disaster events because:
+   - Events must be reliably delivered
+   - HTTP infrastructure (proxies, firewalls) is already in place
+   - Reconnection is automatic on disconnect
+
+8. SEVERITY IS TYPE-SPECIFIC — severity_raw has different physical units
+   per event type. Never compare raw severity across types. The consumer
+   normalizes to LOW/MEDIUM/HIGH/CRITICAL levels for cross-type comparison.
+
+9. DEDUPLICATION — ETL deduplicates on event_id (UNIQUE constraint in
+   fact_disaster_events). Running ETL twice is safe; duplicates are ignored.
+   Running Module 1 twice regenerates new UUID event_ids, so results
+   accumulate if you don't truncate first.
+
+10. DATA HISTORY — Historical data covers 1980–2025. ~500k events total
+    at --scale 1000. Earthquakes: flat ~740/year. Fires: rising ~820→2200.
+    Floods: rising ~820→1200. Storms: rising ~740→1600.
+
+================================================================================
+  SCHEMA REFERENCE
+================================================================================
+
+RAW EARTHQUAKE SCHEMA (USGS GeoJSON Feature):
+{
+  "type": "Feature",
+  "id": "us7000abcd",
+  "properties": {
+    "mag": 6.2,              ← Richter magnitude
+    "magType": "mww",
+    "time": 1700000000000,   ← Unix epoch milliseconds
+    "place": "50km NE of Seismic Zone",
+    "net": "us",             ← agency network code (us/eu/jp/es/nz)
+    "updated": 1700003600000,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 554, "nst": 120, "dmin": 0.5, "rms": 0.8, "gap": 45, "magNst": 45
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [lon, lat, depth_km]   ← GeoJSON order: lon FIRST
+  }
+}
+
+RAW FIRE SCHEMA (NASA FIRMS MODIS):
+{
+  "latitude": 37.123,
+  "longitude": -120.456,
+  "brightness": 345.6,       ← brightness temperature (K)
+  "scan": 1.0, "track": 1.1,
+  "acq_date": "2023-08-15",  ← acquisition date
+  "acq_time": "0112",        ← HHMM format
+  "satellite": "Terra",      ← Terra | Aqua | NOAA-20 | Suomi NPP
+  "instrument": "MODIS",     ← MODIS | VIIRS
+  "confidence": 85,          ← 0-100
+  "version": "6.1NRT",
+  "bright_t31": 298.4,
+  "frp": 42.3,               ← Fire Radiative Power in MW  ← KEY FIELD
+  "daynight": "D"            ← D | N
+}
+
+RAW FLOOD SCHEMA (USGS High Water Marks):
+{
+  "hwm_id": 100042,
+  "site_latitude": 23.456,
+  "site_longitude": 90.123,
+  "height_above_gnd_ft": 12.5,   ← KEY FIELD (normalizer × 30.48 → cm)
+  "hwm_environment": "Riverine",  ← Riverine | Coastal | Lacustrine | Estuarine
+  "peak_date": "2023-07-20T14:00:00",   ← no trailing Z
+  "flood_event": "Monsoon 2023",
+  "country": "Unknown",
+  "state_name": null, "county": null,
+  "site_description": "River gauge station",
+  "hwm_quality_id": 2,
+  "approval_status_id": 1
+}
+
+RAW STORM SCHEMA (IBTrACS Best Track):
+{
+  "sid": "2023225N18520",   ← storm ID: YYYYDDDHemLATLON
+  "season": 2023,
+  "number": 14,
+  "basin": "NA",            ← NA | WP | NI | EP | SI | SP
+  "subbasin": "MM",
+  "name": "LEE",
+  "iso_time": "2023-09-05 06:00:00",   ← space-separated, no Z
+  "nature": "TS",           ← TD | TS | TY | HU
+  "lat": 18.5,
+  "lon": -75.2,
+  "wmo_wind": 85,           ← KEY FIELD: wind speed in KNOTS
+  "wmo_pres": 979,          ← pressure hPa
+  "track_type": "main",
+  "dist2land": 45.0,
+  "landfall": 0             ← 0 | 1
+}
+
+UNIFIED KAFKA SCHEMA (after normalization):
+{
+  "event_id": "550e8400-e29b-41d4-a716-446655440000",
+  "event_type": "earthquake",   ← earthquake | fire | flood | storm
+  "severity_raw": 6.2,          ← type-specific physical unit
+  "latitude": 35.123,
+  "longitude": 139.456,
+  "timestamp": "2023-09-05T06:00:00Z",
+  "source": "USGS"              ← USGS | NASA-FIRMS | USGS-HWM | IBTrACS
+}
+
+PROCESSED EVENT (after Module 3 consumer):
+{
+  "event_id": "...",
+  "event_type": "...",
+  "severity_level": "HIGH",     ← LOW | MEDIUM | HIGH | CRITICAL
+  "latitude": ..., "longitude": ...,
+  "event_time": "...",          ← renamed from timestamp
+  "processed_at": "...",        ← NEW: when consumer processed it
+  "source": "..."
+}
+
+MONGODB DOCUMENT (disaster_events collection):
+{
+  "_id": "event_id",
+  "event_type": "...",
+  "severity_level": "...",
+  "location": {"type": "Point", "coordinates": [lon, lat]},
+  "event_time": ISODate(...),
+  "processed_at": ISODate(...),
+  "source": "..."
+}
+
+POSTGRESQL STAR SCHEMA:
+  dim_event_type  : event_type_id SERIAL PK, event_type_name VARCHAR UNIQUE
+  dim_location    : location_id SERIAL PK, country VARCHAR, region VARCHAR,
+                    latitude NUMERIC, longitude NUMERIC
+  dim_time        : time_id SERIAL PK, date DATE, day INT, month INT,
+                    year INT, hour INT
+  fact_disaster_events: fact_id SERIAL PK,
+                    event_id VARCHAR UNIQUE,    ← dedup guard
+                    event_type_id INT FK,
+                    location_id INT FK,
+                    time_id INT FK,
+                    severity_level VARCHAR,
+                    source VARCHAR
+
+================================================================================
+  NORMALIZER CONVERSION RULES (normalizer.py)
+================================================================================
+
+normalize_earthquake(raw):
+  severity_raw = raw["properties"]["mag"]
+  lat = raw["geometry"]["coordinates"][1]    ← index 1 (not 0, GeoJSON is lon-first)
+  lon = raw["geometry"]["coordinates"][0]
+  timestamp = epoch_ms / 1000 → datetime → ISO string
+  source = _NET_TO_SOURCE[raw["properties"]["net"]]
+    → {"us":"USGS", "eu":"EMSC", "jp":"JMA", "es":"IGN", "nz":"GeoNet"}
+
+normalize_fire(raw):
+  severity_raw = raw["frp"]
+  timestamp = acq_date + "T" + acq_time[:2] + ":" + acq_time[2:] + ":00Z"
+  source = "NASA-FIRMS"
+
+normalize_flood(raw):
+  severity_raw = raw["height_above_gnd_ft"] * 30.48   ← ft → cm
+  timestamp = raw["peak_date"] + "Z"   ← add Z if missing
+  source = "USGS-HWM"
+
+normalize_storm(raw):
+  severity_raw = raw["wmo_wind"] * 1.852   ← knots → km/h
+  timestamp = raw["iso_time"].replace(" ", "T") + "Z"
+  source = "IBTrACS"
+
+================================================================================
+  RECENT CHANGES (session history summary)
+================================================================================
+
+The following major changes were made in recent sessions:
+
+1. LIVE STREAMING SYSTEM added (services/realtime-service/live_generator.py,
+   services/query-api/routers/live.py, mongo_client.py, api.py):
+   - live_generator.py generates events every 10s, seeds 10-20 on startup
+   - SSE endpoint /live/stream polls MongoDB every 1 second
+   - /live/start and /live/stop control the generator subprocess
+   - TTL index on live_events.event_time expires docs after 8 hours
+
+2. ANALYTICS FILTERS added (routers/analytics.py, postgres_client.py):
+   - /analytics/monthly-trends now accepts: start_date, end_date, country
+   - /analytics/search now has offset param for proper pagination
+
+3. DATA QUALITY FIXES done on PostgreSQL (fix_year_distribution.py):
+   - 2024 data spike (441,874 events vs ~15,500/year) fixed by truncation
+   - Year-over-year artificial step pattern fixed
+   - Target counts: earthquake ~740/year flat, flood 820→1200, storm 740→1600,
+     fire 820→2200 (gentle increase reflecting climate/monitoring trends)
+
+4. GEOGRAPHIC DISTRIBUTION improved (generate_data.py):
+   - Expanded from ~10 zones to 17-21 zones per disaster type
+   - Added India fires, South America floods, proper African coverage
+   - Cluster format changed to 4-tuple: (lat, lon, std, weight)
+   - Africa accounts for ~40% of fire events (correct per NASA FIRMS)
+
+5. TEMPORAL DISTRIBUTION improved (generate_data.py):
+   - Added seasonal monthly weights (monsoon peaks, cyclone season, etc.)
+   - Added lognormal inter-annual variability (not perfectly flat year/year)
+   - Removed artificial decade-based weights that caused unrealistic trends
+
+6. RAW SCHEMA PIPELINE implemented (most recent change):
+   - generate_data.py now generates raw source-specific schemas
+   - normalizer.py (NEW) converts raw → unified Kafka schema
+   - main.py updated to orchestrate: generate raw → write raw → normalize → write unified
+   - data/raw/ directory stores raw files for auditing
+
+================================================================================
+  IMPORTANT GOTCHAS
+================================================================================
+
+- MongoDB port is 28020 (mongos), NOT 27017 (standalone mongod)
+- GeoJSON coordinates are [longitude, latitude] order — NOT [lat, lon]
+- IBTrACS wmo_wind is in KNOTS, not km/h. Normalizer converts ×1.852
+- USGS time field is epoch MILLISECONDS, not seconds. Divide by 1000
+- USGS HWM peak_date has no trailing Z. Normalizer appends it
+- IBTrACS iso_time uses a space separator "2023-09-05 06:00:00" — not "T"
+- Aftershock injection in _earthquakes() accesses raw schema fields:
+    ms["properties"]["mag"] for magnitude
+    ms["geometry"]["coordinates"][1] for lat
+    ms["geometry"]["coordinates"][0] for lon
+  (NOT ms["severity_raw"] / ms["latitude"] — those are unified schema fields)
+- Running main.py twice will produce NEW uuid event_ids, so if you ETL twice
+  without truncating first, you'll get duplicate events in PostgreSQL
+- The fire clusters include no ocean zones (fire cannot occur at sea)
+- Storm clusters are ocean-based (tropical cyclones form over warm water)
+- fix_year_distribution.py is a one-off script, do not run again unless
+  you want to further trim the PostgreSQL data distribution
+
+================================================================================
+  ENVIRONMENT / CONNECTIONS SUMMARY
+================================================================================
+
+Service            | Host:Port           | Credentials
+-------------------+---------------------+-----------------------------
+MongoDB (mongos)   | localhost:28020      | (none / default)
+MongoDB database   | disaster_db          |
+MongoDB collections| disaster_events,     |
+                   | live_events          |
+PostgreSQL         | localhost:5432        | user: postgres, pass: postgres
+PostgreSQL database| disaster_dw           |
+Kafka broker       | localhost:9092        | (none)
+Kafka topics       | earthquakes-topic,    |
+                   | fires-topic,          |
+                   | floods-topic,         |
+                   | storms-topic          |
+FastAPI            | localhost:8000        | (no auth — dev mode)
+API docs           | localhost:8000/docs   |
+
+================================================================================
+  END OF CONTEXT DOCUMENT
+================================================================================

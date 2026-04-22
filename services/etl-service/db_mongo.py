@@ -17,7 +17,7 @@ from typing import Optional
 
 log = logging.getLogger(__name__)
 
-_DEFAULT_URI        = "mongodb://localhost:27017/"
+_DEFAULT_URI        = "mongodb://localhost:28020/"  # mongos router
 _DEFAULT_DATABASE   = "disaster_db"
 _DEFAULT_COLLECTION = "disaster_events"
 

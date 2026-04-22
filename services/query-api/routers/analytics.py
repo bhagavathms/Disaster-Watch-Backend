@@ -88,7 +88,16 @@ def get_monthly_trends(
         None, description="Limit to one disaster type"
     ),
     year: Optional[int] = Query(
-        None, ge=2000, le=2100, description="Limit to a single calendar year"
+        None, ge=1980, le=2100, description="Limit to a single calendar year"
+    ),
+    start_date: Optional[str] = Query(
+        None, description="Start of date range (YYYY-MM-DD)"
+    ),
+    end_date: Optional[str] = Query(
+        None, description="End of date range (YYYY-MM-DD)"
+    ),
+    country: Optional[str] = Query(
+        None, description="Filter by country (partial match, e.g. Indonesia)"
     ),
     postgres: PostgresReadClient = Depends(get_postgres),
 ):
@@ -97,12 +106,16 @@ def get_monthly_trends(
 
     - `GET /analytics/monthly-trends` — all types, all years
     - `GET /analytics/monthly-trends?event_type=earthquake&year=2024`
-    - `GET /analytics/monthly-trends?year=2024`
+    - `GET /analytics/monthly-trends?start_date=2010-01-01&end_date=2020-12-31`
+    - `GET /analytics/monthly-trends?country=Japan&event_type=earthquake`
     """
     try:
         rows = postgres.get_monthly_trends(
             event_type=event_type.value if event_type else None,
             year=year,
+            start_date=start_date,
+            end_date=end_date,
+            country=country,
         )
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"PostgreSQL unavailable: {exc}")
@@ -128,6 +141,12 @@ def get_monthly_trends(
         active_filters["event_type"] = event_type.value
     if year is not None:
         active_filters["year"] = year
+    if start_date:
+        active_filters["start_date"] = start_date
+    if end_date:
+        active_filters["end_date"] = end_date
+    if country:
+        active_filters["country"] = country
 
     return MonthlyTrendsResponse(filters=active_filters, data=items)
 

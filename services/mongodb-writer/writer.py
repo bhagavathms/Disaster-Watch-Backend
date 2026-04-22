@@ -405,7 +405,7 @@ Examples:
   python writer.py                          Kafka -> MongoDB (live stream)
   python writer.py --from-beginning         Re-process from Kafka offset 0
   python writer.py --broker localhost:9093  Custom Kafka broker
-  python writer.py --mongo-uri "mongodb://localhost:27017/"
+  python writer.py --mongo-uri "mongodb://localhost:28020/"
         """,
     )
     parser.add_argument(
@@ -426,9 +426,9 @@ Examples:
     )
     parser.add_argument(
         "--mongo-uri",
-        default="mongodb://localhost:27017/",
+        default="mongodb://localhost:28020/",
         metavar="URI",
-        help="MongoDB connection URI (default: mongodb://localhost:27017/)",
+        help="MongoDB connection URI (default: mongodb://localhost:28020/)",
     )
     parser.add_argument(
         "--from-beginning",

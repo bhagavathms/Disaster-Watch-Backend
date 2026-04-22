@@ -35,7 +35,7 @@ from config import settings
 from models.schemas import HealthResponse, ServiceStatus
 from mongo_client import MongoReadClient
 from postgres_client import PostgresReadClient
-from routers import analytics, events
+from routers import analytics, events, live, map as map_router, realtime
 
 log = logging.getLogger(__name__)
 logging.basicConfig(
@@ -60,6 +60,10 @@ async def lifespan(app: FastAPI):
     try:
         mongo.connect()
         log.info("[STARTUP] MongoDB OK")
+        try:
+            mongo.ensure_live_indexes()
+        except Exception as exc:
+            log.warning("[STARTUP] Live index creation skipped: %s", exc)
     except (ImportError, ConnectionError) as exc:
         log.warning("[STARTUP] MongoDB unavailable: %s", exc)
         # App starts in degraded mode; /events endpoints will return 503
@@ -69,6 +73,10 @@ async def lifespan(app: FastAPI):
     try:
         postgres.connect()
         log.info("[STARTUP] PostgreSQL OK")
+        try:
+            postgres.ensure_map_indexes()
+        except Exception as exc:
+            log.warning("[STARTUP] Map index creation skipped: %s", exc)
     except (ImportError, ConnectionError) as exc:
         log.warning("[STARTUP] PostgreSQL unavailable: %s", exc)
         # App starts in degraded mode; /analytics endpoints will return 503
@@ -108,7 +116,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins     = ["*"],
-    allow_methods     = ["GET"],
+    allow_methods     = ["GET", "POST"],
     allow_headers     = ["*"],
 )
 
@@ -117,6 +125,9 @@ app.add_middleware(
 
 app.include_router(events.router)
 app.include_router(analytics.router)
+app.include_router(map_router.router)
+app.include_router(realtime.router)
+app.include_router(live.router)
 
 
 # ── Root ──────────────────────────────────────────────────────────────────────

@@ -59,12 +59,15 @@ def _run(label: str, cwd: str, args: list[str]) -> bool:
 
 # ── Pipeline steps ───────────────────────────────────────────────────────────
 
-def run_module_1() -> bool:
+def run_module_1(scale: int = 1) -> bool:
     """Module 1: Generate synthetic disaster datasets."""
+    args = ["main.py"]
+    if scale > 1:
+        args += ["--scale", str(scale)]
     return _run(
         "Module 1 -- Synthetic Data Generation",
         PROJECT_ROOT,
-        ["main.py"],
+        args,
     )
 
 
@@ -160,6 +163,10 @@ Examples:
         "--api-only", action="store_true",
         help="Skip Modules 1-5, just start the Query API server",
     )
+    parser.add_argument(
+        "--scale", type=int, default=1, metavar="N",
+        help="Multiply base event counts by N (default: 1 → ~400 events)",
+    )
     args = parser.parse_args()
 
     _banner("Disaster Monitoring System -- Full Pipeline")
@@ -173,7 +180,7 @@ Examples:
 
     if not args.api_only:
         steps = [
-            ("Module 1", lambda: run_module_1()),
+            ("Module 1", lambda: run_module_1(args.scale)),
             ("Module 2", lambda: run_module_2(args.dry_run)),
             ("Module 3", lambda: run_module_3()),
             ("Module 4", lambda: run_module_4(args.dry_run)),

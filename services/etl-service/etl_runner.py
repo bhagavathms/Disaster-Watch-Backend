@@ -69,7 +69,7 @@ from transform  import transform
 from load       import load
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
-_DEFAULT_MONGO_URI = "mongodb://localhost:27017/"
+_DEFAULT_MONGO_URI = "mongodb://localhost:28020/"  # mongos router
 _DEFAULT_PG_DSN    = "postgresql://postgres:postgres@localhost:5432/disaster_dw"
 
 
