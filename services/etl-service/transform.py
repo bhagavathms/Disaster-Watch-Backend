@@ -25,24 +25,74 @@ Geographic classification:
 
 from __future__ import annotations
 
+import csv
+import importlib.util
 import logging
+import os
 from dataclasses import dataclass
 from datetime import date, datetime
+from typing import Optional
 
 log = logging.getLogger(__name__)
 
-# ── Reverse geocoder setup ────────────────────────────────────────────────────
+# ── Grid-based city lookup (pure Python, no scipy/multiprocessing) ────────────
+# Reads rg_cities1000.csv bundled with the reverse_geocoder package.
+# Organises ~144k cities into 1°×1° lat/lon grid cells for fast nearest-city
+# lookup without spawning worker processes.
 
-try:
-    import reverse_geocoder as _rg
-    _RG_AVAILABLE = True
-    log.info("[TRANSFORM] reverse_geocoder loaded — using accurate country lookup")
-except ImportError:
-    _RG_AVAILABLE = False
-    log.warning(
-        "[TRANSFORM] reverse_geocoder not installed. Country/region will be approximate. "
-        "Run:  pip install reverse_geocoder"
-    )
+_CityGrid = dict[tuple[int, int], list[tuple[float, float, str]]]
+_CITY_GRID: Optional[_CityGrid] = None
+_GRID_AVAILABLE = False
+
+
+def _load_city_grid() -> bool:
+    global _CITY_GRID, _GRID_AVAILABLE
+    spec = importlib.util.find_spec("reverse_geocoder")
+    if spec is None:
+        log.warning("[TRANSFORM] reverse_geocoder not installed — falling back to hemisphere labels")
+        return False
+    csv_path = os.path.join(os.path.dirname(spec.origin), "rg_cities1000.csv")
+    if not os.path.exists(csv_path):
+        log.warning("[TRANSFORM] rg_cities1000.csv not found at %s", csv_path)
+        return False
+    try:
+        grid: _CityGrid = {}
+        with open(csv_path, newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                lat, lon, cc = float(row["lat"]), float(row["lon"]), row["cc"]
+                cell = (int(lat), int(lon))
+                if cell not in grid:
+                    grid[cell] = []
+                grid[cell].append((lat, lon, cc))
+        _CITY_GRID = grid
+        _GRID_AVAILABLE = True
+        log.info("[TRANSFORM] City grid loaded — %d cells, pure-Python nearest-city lookup", len(grid))
+        return True
+    except Exception as exc:
+        log.warning("[TRANSFORM] Failed to load city grid: %s", exc)
+        return False
+
+
+_load_city_grid()
+
+
+def _nearest_cc(lat: float, lon: float) -> str:
+    """Return the ISO alpha-2 country code for the nearest city, or '' on failure."""
+    if not _GRID_AVAILABLE or _CITY_GRID is None:
+        return ""
+    ilat, ilon = int(lat), int(lon)
+    # Search 3×3 neighbourhood; expand to 5×5 for sparse ocean areas
+    for radius in (1, 2, 3):
+        candidates: list[tuple[float, float, str]] = []
+        for dlat in range(-radius, radius + 1):
+            for dlon in range(-radius, radius + 1):
+                candidates.extend(_CITY_GRID.get((ilat + dlat, ilon + dlon), []))
+        if candidates:
+            break
+    if not candidates:
+        return ""
+    best = min(candidates, key=lambda c: (c[0] - lat) ** 2 + (c[1] - lon) ** 2)
+    return best[2]
 
 # ISO 3166-1 alpha-2 → full country name
 _CC_TO_COUNTRY: dict[str, str] = {
@@ -165,25 +215,10 @@ _CC_TO_REGION: dict[str, str] = {
 
 
 def _classify_location(lat: float, lon: float) -> tuple[str, str]:
-    """
-    Return (country, region) for the given WGS-84 coordinates.
-
-    Primary:  reverse_geocoder k-d tree lookup (accurate, offline, fast).
-    Fallback: hemisphere label when reverse_geocoder is not installed.
-    """
-    if _RG_AVAILABLE:
-        try:
-            hits = _rg.search((lat, lon), verbose=False)
-            if hits:
-                cc      = hits[0].get("cc", "")
-                country = _CC_TO_COUNTRY.get(cc, cc or "Unknown")
-                region  = _CC_TO_REGION.get(cc, _hemisphere(lat, lon))
-                return country, region
-        except Exception as exc:
-            log.debug("[TRANSFORM] reverse_geocoder error at (%.3f, %.3f): %s", lat, lon, exc)
-
-    # Offline fallback
-    return "Unknown", _hemisphere(lat, lon)
+    cc = _nearest_cc(lat, lon)
+    country = _CC_TO_COUNTRY.get(cc, cc or "Unknown")
+    region  = _CC_TO_REGION.get(cc, _hemisphere(lat, lon))
+    return country, region
 
 
 def _hemisphere(lat: float, lon: float) -> str:

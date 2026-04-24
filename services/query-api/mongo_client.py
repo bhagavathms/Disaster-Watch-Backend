@@ -221,14 +221,13 @@ class MongoReadClient:
 
     # ── Live events ───────────────────────────────────────────────────────────
 
-    def get_live_snapshot(self) -> list[dict]:
+    def get_live_snapshot(self, limit: int = 100) -> list[dict]:
         """
-        Return all documents currently in the live_events collection.
-        TTL ensures only the last 8 hours of generated events are present,
-        so this is always a small, frontend-safe payload (≤ ~960 events).
+        Return the most recent `limit` documents from live_events (default 100).
+        Capped to avoid flooding the map on initial load.
         """
         from pymongo import DESCENDING
-        docs = self._live_col.find({}).sort("event_time", DESCENDING)
+        docs = self._live_col.find({}).sort("event_time", DESCENDING).limit(limit)
         return [self._normalise_live(d) for d in docs]
 
     def get_live_since(self, since: datetime) -> list[dict]:

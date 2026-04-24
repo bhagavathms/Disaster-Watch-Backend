@@ -31,7 +31,7 @@ import sys
 from datetime import datetime, timezone
 from typing import AsyncIterator
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 
 log = logging.getLogger(__name__)
@@ -104,10 +104,13 @@ async def _live_event_generator(request: Request) -> AsyncIterator[str]:
         "Call this once on page load, then subscribe to GET /live/stream for updates."
     ),
 )
-def get_live_snapshot(request: Request):
+def get_live_snapshot(
+    request: Request,
+    limit: int = Query(100, ge=1, le=500, description="Max events to return (default 100)"),
+):
     mongo = request.app.state.mongo
     try:
-        events = mongo.get_live_snapshot()
+        events = mongo.get_live_snapshot(limit=limit)
     except Exception as exc:
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}")
     return {"count": len(events), "events": events}

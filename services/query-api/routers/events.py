@@ -134,6 +134,35 @@ def search_events(
         raise HTTPException(status_code=503, detail=f"PostgreSQL unavailable: {exc}")
 
 
+# ── GET /events/summary ──────────────────────────────────────────────────────
+
+@router.get(
+    "/summary",
+    summary="Event summary (counts by type and severity)",
+    description=(
+        "Returns per-type and per-severity counts for the given filters via a single "
+        "GROUP BY query (~150ms).  Use this instead of fetching a large event sample "
+        "just to compute analytics breakdowns."
+    ),
+)
+def get_event_summary(
+    start_date:   Optional[str]       = Query(None, description="YYYY-MM-DD"),
+    end_date:     Optional[str]       = Query(None, description="YYYY-MM-DD"),
+    type:         Optional[List[str]] = Query(None, description="?type=earthquake&type=fire"),
+    country:      Optional[str]       = Query(None),
+    pg: PostgresReadClient            = Depends(get_postgres),
+):
+    try:
+        return pg.get_event_summary(
+            start_date  = start_date,
+            end_date    = end_date,
+            event_types = type,
+            country     = country,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"PostgreSQL unavailable: {exc}")
+
+
 # ── GET /events/by-location ───────────────────────────────────────────────────
 
 @router.get(

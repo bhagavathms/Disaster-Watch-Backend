@@ -34,7 +34,7 @@ _sim_process: subprocess.Popen | None = None
 _STREAMER_PATH = os.path.normpath(
     os.path.join(
         os.path.dirname(os.path.abspath(__file__)),
-        "..", "..", "..", "realtime-service", "event_streamer.py",
+        "..", "..", "realtime-service", "event_streamer.py",
     )
 )
 

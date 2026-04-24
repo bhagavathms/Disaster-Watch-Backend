@@ -156,33 +156,22 @@ def _insert_fact(
 
 # ── Public load function ──────────────────────────────────────────────────────
 
+_BATCH_SIZE = 10_000  # rows per commit — keeps PostgreSQL WAL manageable
+
+
 def load(conn, events: list[TransformedEvent]) -> LoadStats:
     """
     Load all TransformedEvent records into the PostgreSQL star schema.
 
-    For each event (in order):
-        1. get_or_create dim_event_type  -> event_type_id
-        2. get_or_create dim_location    -> location_id
-        3. get_or_create dim_time        -> time_id
-        4. insert into fact_disaster_events (ON CONFLICT event_id DO NOTHING)
-
-    Per-event errors use savepoints so one bad record does not abort the
-    rest of the batch.  A single COMMIT covers the entire successful batch.
-
-    Args:
-        conn:   An open psycopg2 connection (autocommit=False).
-        events: Output of transform.transform().
-
-    Returns:
-        LoadStats with insert/skip/error counts.
+    Commits every _BATCH_SIZE rows to avoid holding one giant transaction
+    (which can OOM PostgreSQL on constrained machines).
     """
     stats = LoadStats(total_events=len(events))
 
     with conn.cursor() as cur:
         for i, ev in enumerate(events):
-            savepoint = f"sp_{i}"
             try:
-                cur.execute(f"SAVEPOINT {savepoint}")
+                cur.execute("SAVEPOINT sp")
 
                 et_id  = _get_or_create_event_type(cur, ev.event_type_name)
                 loc_id = _get_or_create_location(
@@ -191,13 +180,19 @@ def load(conn, events: list[TransformedEvent]) -> LoadStats:
                 t_id   = _get_or_create_time(cur, ev)
                 _insert_fact(cur, ev, et_id, loc_id, t_id, stats)
 
-                cur.execute(f"RELEASE SAVEPOINT {savepoint}")
+                cur.execute("RELEASE SAVEPOINT sp")
 
             except Exception as exc:
-                cur.execute(f"ROLLBACK TO SAVEPOINT {savepoint}")
+                cur.execute("ROLLBACK TO SAVEPOINT sp")
                 stats.errors += 1
-                log.error(
-                    "[LOAD] Error  event_id=%s  error=%s", ev.event_id, exc
+                log.error("[LOAD] Error  event_id=%s  error=%s", ev.event_id, exc)
+
+            # Periodic commit to keep transaction size bounded
+            if (i + 1) % _BATCH_SIZE == 0:
+                conn.commit()
+                log.info(
+                    "[LOAD] Batch committed  progress=%d/%d  inserted=%d",
+                    i + 1, len(events), stats.facts_inserted,
                 )
 
     conn.commit()

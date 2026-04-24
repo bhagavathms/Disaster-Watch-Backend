@@ -256,8 +256,8 @@ class PostgresReadClient:
             where_clauses.append("t.date <= %(end_date)s")
             params["end_date"] = end_date
         if country:
-            where_clauses.append("l.country ILIKE %(country)s")
-            params["country"] = f"%{country}%"
+            where_clauses.append("lower(l.country) = lower(%(country)s)")
+            params["country"] = country
 
         needs_location  = country is not None
         needs_event_type = event_type is not None
@@ -369,8 +369,8 @@ class PostgresReadClient:
             params["event_types"] = list(event_types)
 
         if country:
-            where.append("l.country ILIKE %(country)s")
-            params["country"] = f"%{country}%"
+            where.append("lower(l.country) = lower(%(country)s)")
+            params["country"] = country
 
         if region:
             where.append("l.region ILIKE %(region)s")
@@ -414,7 +414,7 @@ class PostgresReadClient:
             JOIN dim_event_type et ON f.event_type_id = et.event_type_id
             JOIN dim_time       t  ON f.time_id       = t.time_id
             {where_sql}
-            ORDER BY t.date DESC, t.hour DESC
+            ORDER BY f.time_id DESC
             LIMIT %(limit)s
             OFFSET %(offset)s
         """
@@ -440,6 +440,57 @@ class PostgresReadClient:
             for r in rows
         ]
         return {"events": events, "total": total}
+
+    def get_event_summary(
+        self,
+        start_date:   Optional[str]       = None,
+        end_date:     Optional[str]       = None,
+        event_types:  Optional[list[str]] = None,
+        country:      Optional[str]       = None,
+    ) -> dict:
+        """
+        Fast GROUP BY summary: per-type and per-severity counts for the given
+        filters.  Replaces fetching a 2000-event analytics sample on the frontend.
+        """
+        where:  list[str] = []
+        params: dict      = {}
+
+        if start_date:
+            where.append("t.date >= %(start_date)s");  params["start_date"] = start_date
+        if end_date:
+            where.append("t.date <= %(end_date)s");    params["end_date"]   = end_date
+        if event_types:
+            where.append("et.event_type_name = ANY(%(event_types)s)")
+            params["event_types"] = list(event_types)
+        if country:
+            where.append("lower(l.country) = lower(%(country)s)")
+            params["country"] = country
+
+        where_sql = ("WHERE " + " AND ".join(where)) if where else ""
+
+        sql = f"""
+            SELECT et.event_type_name, f.severity_level, COUNT(*) AS cnt
+            FROM fact_disaster_events f
+            JOIN dim_location   l  ON f.location_id   = l.location_id
+            JOIN dim_event_type et ON f.event_type_id = et.event_type_id
+            JOIN dim_time       t  ON f.time_id       = t.time_id
+            {where_sql}
+            GROUP BY et.event_type_name, f.severity_level
+        """
+        with self._conn() as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql, params)
+                rows = cur.fetchall()
+
+        by_type: dict[str, int] = {}
+        by_sev:  dict[str, int] = {}
+        total = 0
+        for event_type, severity, cnt in rows:
+            by_type[event_type] = by_type.get(event_type, 0) + cnt
+            by_sev[severity]    = by_sev.get(severity,    0) + cnt
+            total += cnt
+
+        return {"by_type": by_type, "by_severity": by_sev, "total": total}
 
     def ensure_map_indexes(self) -> None:
         """
